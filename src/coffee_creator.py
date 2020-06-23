@@ -9,7 +9,6 @@ class Coffee:
     
     def __str__(self):
         return f"{self.name} - {self.price}$:\t{' | '.join([f'{ingredient} - {amount} mL' for ingredient, amount in self.ingredients.items()])}"
-    
 
 
 class CoffeeCreator(Coffee):

@@ -10,6 +10,12 @@ class Coffee:
     def __str__(self):
         return f"{self.name} - {self.price}$:\t{' | '.join([f'{ingredient} - {amount} mL' for ingredient, amount in self.ingredients.items()])}"
     
+
+
+class CoffeeCreator(Coffee):
+    def __init__(self, name: str, ingredients: dict, price: int):
+        super().__init__(name, ingredients, price)
+    
     def final_cost(self, number_of_coffees: int):
         return self.price * int(number_of_coffees)
     
@@ -30,10 +36,11 @@ class Coffee:
             possible_ingredients.setdefault(amount, set()).update([ingredient])
         max_possible = min(possible_ingredients.keys())
 
-        return {max_possible: possible_ingredients[max_possible]}
+        return (max_possible, possible_ingredients[max_possible])
 
 if __name__ == "__main__":
-    regular = Coffee('Regular', {'water': 200, 'milk': 20, 'cocoa': 5}, 6)
+    regular = CoffeeCreator('Regular', {'water': 200, 'milk': 20, 'cocoa': 5}, 6)
 
     print(regular)
-    regular.limiting_ingredient({'water': 200, 'milk': 20})
+    limiter = regular.limiting_ingredient({'water': 200, 'milk': 20})
+    print(f"The maximum of coffees you can make is {limiter[0]}, which is limited by {' and '.join(limiter[1])}")

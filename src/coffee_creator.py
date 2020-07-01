@@ -1,4 +1,4 @@
-### COFFEE CREATOR
+### coffee_creator.py
 ## CREATE A COFFEE
 
 class Coffee:
@@ -68,6 +68,6 @@ class CoffeeCreator(Coffee):
 if __name__ == "__main__":
     regular = CoffeeCreator('Regular', {'water': 200, 'milk': 20, 'cocoa': 5}, 6)
     print(regular)
-    
+
     limiter = regular.limiting_ingredient({'water': 200, 'milk': 20})
     print(f"The maximum of coffees you can make is {limiter[0]}, which is limited by {' and '.join(limiter[1])}")

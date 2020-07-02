@@ -15,16 +15,28 @@ VERSION = "v1.0.0"
 
 
 class CoffeeMachine(QApplication):
+    """## Tweaked QApplication for CoffeeMachine
+    
+    ### Methods:\n
+      .exec_() -- Run the instance
+    """
+
     def __init__(self):
         super().__init__()
 
-        self.window = MainWindow()
+        self.window = CoffeeWindow()
+        self.ui = self.window.ui
+
         self.window.show()
 
-        sys.exit(self.exec_())
 
+class CoffeeWindow(QMainWindow):
+    """## Tweak QMainWindow for CoffeeMachine
+    
+    ### Attributes:\n
+      .ui -- GUI Elements set with Qt Designer
+    """
 
-class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
@@ -36,3 +48,4 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = CoffeeMachine()
+    sys.exit(app.exec_())

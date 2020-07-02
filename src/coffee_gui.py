@@ -11,7 +11,7 @@ import coffee_interface_ui
 # Accède aux fichiers depuis la racine du programme, et non l'endroit du shell
 os.chdir(os.path.realpath(__file__).replace(os.path.basename(__file__), ""))
 
-VERSION = "v1.0.0b1"
+VERSION = "v1.0.0"
 
 
 class CoffeeMachine(QApplication):

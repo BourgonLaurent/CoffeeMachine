@@ -362,7 +362,7 @@ QCheckBox::indicator:unchecked {
       <string>0001</string>
      </property>
     </widget>
-    <widget class="QCheckBox" name="coffeeInfinityCheckBox_2">
+    <widget class="QCheckBox" name="waterInfinityCheckBox">
      <property name="geometry">
       <rect>
        <x>79</x>
@@ -384,7 +384,7 @@ QCheckBox::indicator:unchecked {
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QCheckBox" name="coffeeInfinityCheckBox_3">
+    <widget class="QCheckBox" name="milkInfinityCheckBox">
      <property name="geometry">
       <rect>
        <x>239</x>
@@ -406,7 +406,7 @@ QCheckBox::indicator:unchecked {
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QCheckBox" name="coffeeInfinityCheckBox_4">
+    <widget class="QCheckBox" name="beanInfinityCheckBox">
      <property name="geometry">
       <rect>
        <x>399</x>
@@ -437,9 +437,9 @@ QCheckBox::indicator:unchecked {
     <zorder>milkSelectionPixmap</zorder>
     <zorder>beanSelectionPixmap</zorder>
     <zorder>beanSelectorSuffix</zorder>
-    <zorder>coffeeInfinityCheckBox_2</zorder>
-    <zorder>coffeeInfinityCheckBox_3</zorder>
-    <zorder>coffeeInfinityCheckBox_4</zorder>
+    <zorder>waterInfinityCheckBox</zorder>
+    <zorder>milkInfinityCheckBox</zorder>
+    <zorder>beanInfinityCheckBox</zorder>
    </widget>
    <widget class="QGroupBox" name="priceGroupBox">
     <property name="geometry">
@@ -501,7 +501,7 @@ QCheckBox::indicator:unchecked {
       <string>001</string>
      </property>
     </widget>
-    <widget class="QCheckBox" name="coffeeInfinityCheckBox_5">
+    <widget class="QCheckBox" name="priceInfinityCheckBox">
      <property name="geometry">
       <rect>
        <x>85</x>
@@ -526,21 +526,28 @@ QCheckBox::indicator:unchecked {
     <zorder>priceSelector</zorder>
     <zorder>priceSelectionPixmap</zorder>
     <zorder>priceSelectorSuffix</zorder>
-    <zorder>coffeeInfinityCheckBox_5</zorder>
+    <zorder>priceInfinityCheckBox</zorder>
    </widget>
-   <widget class="QLabel" name="adminPanelLabel">
+   <widget class="QPushButton" name="adminPanelLabel">
     <property name="geometry">
      <rect>
-      <x>658</x>
-      <y>463</y>
+      <x>651</x>
+      <y>469</y>
       <width>111</width>
-      <height>91</height>
+      <height>81</height>
      </rect>
     </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;print('hi')&quot;&gt;&lt;img src=&quot;:/icons/assets/users-cog.svg&quot;/&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <property name="icon">
+     <iconset resource="coffee_interface_resources.qrc">
+      <normaloff>:/icons/assets/users-cog.svg</normaloff>:/icons/assets/users-cog.svg</iconset>
     </property>
-    <property name="openExternalLinks">
+    <property name="iconSize">
+     <size>
+      <width>105</width>
+      <height>73</height>
+     </size>
+    </property>
+    <property name="flat">
      <bool>true</bool>
     </property>
    </widget>

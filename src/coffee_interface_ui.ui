@@ -527,7 +527,7 @@ QPushButton#adminPushButton {
   <customwidget>
    <class>InfinityButton</class>
    <extends>QLabel</extends>
-   <header>infinity.h</header>
+   <header>components/infinity.h</header>
   </customwidget>
  </customwidgets>
  <resources>

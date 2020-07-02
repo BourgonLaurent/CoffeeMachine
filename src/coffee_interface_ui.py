@@ -15,7 +15,7 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
     QPixmap, QRadialGradient)
 from PySide2.QtWidgets import *
 
-from infinity import InfinityButton
+from components.infinity import InfinityButton
 
 import coffee_interface_resources_rc
 

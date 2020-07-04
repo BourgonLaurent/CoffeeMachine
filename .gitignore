@@ -132,4 +132,7 @@ dmypy.json
 DEBUG/
 .vscode/
 
+# Environment
+.DS_Store
+
 ## PROJECT RELATED

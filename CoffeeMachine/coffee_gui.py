@@ -1,19 +1,19 @@
 # coffee_gui.py
 # Taking care of the connection between UI and modules
 
+# Librairies
 import os
 import sys
 from typing import List, Dict
 from PySide2.QtWidgets import QApplication, QLineEdit, QMainWindow
 
-import .coffee_interface_ui
-
+# Project
+from . import __version__
+from .coffee_interface_ui import Ui_mainWindow
 from .coffee_creator import CoffeeCreator
 
 # Accède aux fichiers depuis la racine du programme, et non l'endroit du shell
 os.chdir(os.path.realpath(__file__).replace(os.path.basename(__file__), ""))
-
-VERSION = "v2.0.0b1"
 
 
 class CoffeeMachine(QApplication):
@@ -24,6 +24,7 @@ class CoffeeMachine(QApplication):
     """
 
     def __init__(self, coffees: List[CoffeeCreator] = None):
+        # qInitResources()
         super().__init__()
 
         self.coffees: List[CoffeeCreator] = coffees if coffees else [
@@ -31,7 +32,7 @@ class CoffeeMachine(QApplication):
         ]
 
         self.window: CoffeeWindow = CoffeeWindow(self)
-        self.window.setWindowTitle(f"CoffeeMachine - {VERSION}")
+        self.window.setWindowTitle(f"CoffeeMachine - {__version__}")
 
         self.window.show()
 
@@ -48,7 +49,7 @@ class CoffeeWindow(QMainWindow):
 
         self.parent: CoffeeMachine = parent
 
-        self.ui = coffee_interface_ui.Ui_mainWindow()
+        self.ui = Ui_mainWindow()
         self.ui.setupUi(self)
 
         self.current_coffee: CoffeeCreator = self.parent.coffees[0]
@@ -58,9 +59,15 @@ class CoffeeWindow(QMainWindow):
         self.wordToSelector: Dict[str, QLineEdit] = {
             "water": self.ui.waterSelector,
             "milk": self.ui.milkSelector,
-            "beans": self.ui.beanSelector,
+            "beans": self.ui.beansSelector,
             "price": self.ui.priceSelector,
         }
+
+        self.ui.coffeeSelectionSvg.load("assets/logo.svg")
+        self.ui.waterSelectionSvg.load("assets/faucet-drip.svg")
+        self.ui.milkSelectionSvg.load("assets/cow.svg")
+        self.ui.beansSelectionSvg.load("assets/coffee-beans.svg")
+        self.ui.priceSelectionSvg.load("assets/usd-square.svg")
 
     def _enableConnections(self):
         self.ui.coffeeSelector.textChanged.connect(self.setFromCoffee)
@@ -74,8 +81,3 @@ class CoffeeWindow(QMainWindow):
 
         for word, selector in self.wordToSelector.items():
             selector.setText(str(ingredients[word]).zfill(3))
-
-
-if __name__ == "__main__":
-    app = CoffeeMachine()
-    sys.exit(app.exec_())

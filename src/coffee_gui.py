@@ -3,10 +3,8 @@
 
 import os
 import sys
-from typing import List
-from PySide2.QtWidgets import QApplication, QMainWindow
-from PySide2.QtCore import QFile
-from PySide2.QtGui import QIntValidator
+from typing import List, Dict
+from PySide2.QtWidgets import QApplication, QLineEdit, QMainWindow
 
 import coffee_interface_ui
 
@@ -29,9 +27,11 @@ class CoffeeMachine(QApplication):
         super().__init__()
 
         self.coffees: List[CoffeeCreator] = coffees if coffees else [
-            CoffeeCreator('Regular', {'water': 200, 'milk': 20, 'beans': 5}, 6)]
+            CoffeeCreator("Regular", {"water": 200, "milk": 20, "beans": 5}, 6)
+        ]
 
         self.window: CoffeeWindow = CoffeeWindow(self)
+        self.window.setWindowTitle(f"CoffeeMachine - {VERSION}")
 
         self.window.show()
 
@@ -43,12 +43,37 @@ class CoffeeWindow(QMainWindow):
       .ui -- GUI Elements set with Qt Designer
     """
 
-    def __init__(self, parent: CoffeeMachine = None):
+    def __init__(self, parent: CoffeeMachine):
         super().__init__()
-        self.setWindowTitle(f"CoffeeMachine - {VERSION}")
+
+        self.parent: CoffeeMachine = parent
 
         self.ui = coffee_interface_ui.Ui_mainWindow()
         self.ui.setupUi(self)
+
+        self.current_coffee: CoffeeCreator = self.parent.coffees[0]
+
+        self._enableConnections()
+
+        self.wordToSelector: Dict[str, QLineEdit] = {
+            "water": self.ui.waterSelector,
+            "milk": self.ui.milkSelector,
+            "beans": self.ui.beanSelector,
+            "price": self.ui.priceSelector,
+        }
+
+    def _enableConnections(self):
+        self.ui.coffeeSelector.textChanged.connect(self.setFromCoffee)
+
+    def setFromCoffee(self, number_of_coffees: int):
+        if not number_of_coffees:
+            number_of_coffees = 0
+
+        ingredients = self.current_coffee.ingredients_needed(number_of_coffees)
+        ingredients["price"] = self.current_coffee.final_cost(number_of_coffees)
+
+        for word, selector in self.wordToSelector.items():
+            selector.setText(str(ingredients[word]).zfill(3))
 
 
 if __name__ == "__main__":

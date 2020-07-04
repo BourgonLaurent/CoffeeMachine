@@ -35,9 +35,6 @@ class CoffeeMachine(QApplication):
 
         self.window.show()
 
-    def defaultCoffees(self) -> List[CoffeeCreator]:
-        return [CoffeeCreator('Regular', {'water': 200, 'milk': 20, 'beans': 5}, 6)]
-
 
 class CoffeeWindow(QMainWindow):
     """## Tweak QMainWindow for CoffeeMachine

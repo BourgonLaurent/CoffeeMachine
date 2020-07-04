@@ -48,7 +48,7 @@ QGroupBox {
 QLabel#coffeeSelectionLabel,
 QLabel#waterSelectionLabel,
 QLabel#milkSelectionLabe,
-QLabel#beanSelectionLabel,
+QLabel#beansSelectionLabel,
 QLabel#priceSelectionLabel {
   font-family: Segoe UI;
   font-style: normal;
@@ -60,7 +60,7 @@ QLabel#priceSelectionLabel {
 QLineEdit#coffeeSelector,
 QLineEdit#waterSelector,
 QLineEdit#milkSelector,
-QLineEdit#beanSelector,
+QLineEdit#beansSelector,
 QLineEdit#priceSelector {
   background: rgba(190, 168, 135, 0.58);
   border: 2px solid #6F7987;
@@ -75,7 +75,7 @@ QLineEdit#priceSelector {
 QLabel#coffeeSelectorSuffix,
 QLabel#waterSelectorSuffix,
 QLabel#milkSelectorSuffix,
-QLabel#beanSelectorSuffix,
+QLabel#beansSelectorSuffix,
 QLabel#priceSelectorSuffix {
   font-family: Segoe UI;
   font-size: 14px;
@@ -118,28 +118,6 @@ QPushButton#adminPanelLabel:pressed {
     <property name="title">
      <string/>
     </property>
-    <widget class="QLabel" name="coffeeSelectionPixmap">
-     <property name="geometry">
-      <rect>
-       <x>47</x>
-       <y>26</y>
-       <width>100</width>
-       <height>114</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="coffee_interface_resources.qrc">:/icons/assets/logo.svg</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>true</bool>
-     </property>
-     <property name="buddy">
-      <cstring>coffeeSelectionPixmap</cstring>
-     </property>
-    </widget>
     <widget class="QLabel" name="coffeeSelectionLabel">
      <property name="geometry">
       <rect>
@@ -186,7 +164,7 @@ QPushButton#adminPanelLabel:pressed {
       <rect>
        <x>69</x>
        <y>168</y>
-       <width>80</width>
+       <width>81</width>
        <height>16</height>
       </rect>
      </property>
@@ -213,6 +191,21 @@ QPushButton#adminPanelLabel:pressed {
       <string/>
      </property>
     </widget>
+    <widget class="QSvgWidget" name="coffeeSelectionSvg" native="true">
+     <property name="geometry">
+      <rect>
+       <x>47</x>
+       <y>26</y>
+       <width>100</width>
+       <height>114</height>
+      </rect>
+     </property>
+    </widget>
+    <zorder>coffeeSelector</zorder>
+    <zorder>coffeeSelectorSuffix</zorder>
+    <zorder>coffeeInfinityCheckBox</zorder>
+    <zorder>coffeeSelectionSvg</zorder>
+    <zorder>coffeeSelectionLabel</zorder>
    </widget>
    <widget class="QGroupBox" name="ingredientsGroupBox">
     <property name="geometry">
@@ -240,25 +233,6 @@ QPushButton#adminPanelLabel:pressed {
      </property>
      <property name="text">
       <string>0001</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="waterSelectionPixmap">
-     <property name="geometry">
-      <rect>
-       <x>44</x>
-       <y>27</y>
-       <width>100</width>
-       <height>114</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="coffee_interface_resources.qrc">:/icons/assets/faucet-drip.svg</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>false</bool>
      </property>
     </widget>
     <widget class="QLabel" name="waterSelectorSuffix">
@@ -303,45 +277,7 @@ QPushButton#adminPanelLabel:pressed {
       <string>mL of milk</string>
      </property>
     </widget>
-    <widget class="QLabel" name="milkSelectionPixmap">
-     <property name="geometry">
-      <rect>
-       <x>191</x>
-       <y>38</y>
-       <width>131</width>
-       <height>101</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="coffee_interface_resources.qrc">:/icons/assets/cow.svg</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>false</bool>
-     </property>
-    </widget>
-    <widget class="QLabel" name="beanSelectionPixmap">
-     <property name="geometry">
-      <rect>
-       <x>368</x>
-       <y>40</y>
-       <width>100</width>
-       <height>101</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="coffee_interface_resources.qrc">:/icons/assets/coffee-beans.svg</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>false</bool>
-     </property>
-    </widget>
-    <widget class="QLabel" name="beanSelectorSuffix">
+    <widget class="QLabel" name="beansSelectorSuffix">
      <property name="geometry">
       <rect>
        <x>411</x>
@@ -354,7 +290,7 @@ QPushButton#adminPanelLabel:pressed {
       <string>g of beans</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="beanSelector">
+    <widget class="QLineEdit" name="beansSelector">
      <property name="geometry">
       <rect>
        <x>340</x>
@@ -414,7 +350,7 @@ QPushButton#adminPanelLabel:pressed {
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QCheckBox" name="beanInfinityCheckBox">
+    <widget class="QCheckBox" name="beansInfinityCheckBox">
      <property name="geometry">
       <rect>
        <x>399</x>
@@ -436,18 +372,48 @@ QPushButton#adminPanelLabel:pressed {
       <bool>true</bool>
      </property>
     </widget>
-    <zorder>beanSelector</zorder>
+    <widget class="QSvgWidget" name="waterSelectionSvg" native="true">
+     <property name="geometry">
+      <rect>
+       <x>44</x>
+       <y>40</y>
+       <width>101</width>
+       <height>101</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QSvgWidget" name="milkSelectionSvg" native="true">
+     <property name="geometry">
+      <rect>
+       <x>191</x>
+       <y>46</y>
+       <width>131</width>
+       <height>81</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QSvgWidget" name="beansSelectionSvg" native="true">
+     <property name="geometry">
+      <rect>
+       <x>371</x>
+       <y>41</y>
+       <width>91</width>
+       <height>91</height>
+      </rect>
+     </property>
+    </widget>
+    <zorder>beansSelector</zorder>
     <zorder>waterSelector</zorder>
-    <zorder>waterSelectionPixmap</zorder>
     <zorder>waterSelectorSuffix</zorder>
     <zorder>milkSelector</zorder>
     <zorder>milkSelectorSuffix</zorder>
-    <zorder>milkSelectionPixmap</zorder>
-    <zorder>beanSelectionPixmap</zorder>
-    <zorder>beanSelectorSuffix</zorder>
+    <zorder>beansSelectorSuffix</zorder>
     <zorder>waterInfinityCheckBox</zorder>
     <zorder>milkInfinityCheckBox</zorder>
-    <zorder>beanInfinityCheckBox</zorder>
+    <zorder>beansInfinityCheckBox</zorder>
+    <zorder>waterSelectionSvg</zorder>
+    <zorder>milkSelectionSvg</zorder>
+    <zorder>beansSelectionSvg</zorder>
    </widget>
    <widget class="QGroupBox" name="priceGroupBox">
     <property name="geometry">
@@ -461,25 +427,6 @@ QPushButton#adminPanelLabel:pressed {
     <property name="title">
      <string/>
     </property>
-    <widget class="QLabel" name="priceSelectionPixmap">
-     <property name="geometry">
-      <rect>
-       <x>47</x>
-       <y>30</y>
-       <width>121</width>
-       <height>111</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="coffee_interface_resources.qrc">:/icons/assets/usd-square.svg</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>false</bool>
-     </property>
-    </widget>
     <widget class="QLabel" name="priceSelectorSuffix">
      <property name="geometry">
       <rect>
@@ -531,10 +478,20 @@ QPushButton#adminPanelLabel:pressed {
       <bool>true</bool>
      </property>
     </widget>
+    <widget class="QSvgWidget" name="priceSelectionSvg" native="true">
+     <property name="geometry">
+      <rect>
+       <x>47</x>
+       <y>29</y>
+       <width>111</width>
+       <height>111</height>
+      </rect>
+     </property>
+    </widget>
     <zorder>priceSelector</zorder>
-    <zorder>priceSelectionPixmap</zorder>
     <zorder>priceSelectorSuffix</zorder>
     <zorder>priceInfinityCheckBox</zorder>
+    <zorder>priceSelectionSvg</zorder>
    </widget>
    <widget class="QPushButton" name="adminPanelLabel">
     <property name="geometry">
@@ -561,6 +518,14 @@ QPushButton#adminPanelLabel:pressed {
    </widget>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QSvgWidget</class>
+   <extends>QWidget</extends>
+   <header>PySide2.QtSvg</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="coffee_interface_resources.qrc"/>
  </resources>

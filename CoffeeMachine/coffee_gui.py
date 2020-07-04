@@ -6,9 +6,9 @@ import sys
 from typing import List, Dict
 from PySide2.QtWidgets import QApplication, QLineEdit, QMainWindow
 
-import coffee_interface_ui
+import .coffee_interface_ui
 
-from coffee_creator import CoffeeCreator
+from .coffee_creator import CoffeeCreator
 
 # Accède aux fichiers depuis la racine du programme, et non l'endroit du shell
 os.chdir(os.path.realpath(__file__).replace(os.path.basename(__file__), ""))

@@ -56,7 +56,9 @@ class CoffeeCreator(Coffee):
         """Return the maximum number of coffees you could make for one ingredient"""
         return int(amount) // self.ingredients.get(ingredient)
 
-    def limiting_ingredient(self, limited_ingredients: Dict[str, int]) -> Tuple[int, Set[str]]:
+    def limiting_ingredient(
+        self, limited_ingredients: Dict[str, int]
+    ) -> Tuple[int, Set[str]]:
         """## Return the maximum number of coffees you can make
 
         ### Arguments:\n
@@ -65,10 +67,14 @@ class CoffeeCreator(Coffee):
         ### Returns:\n
             \t{Tuple[int, Set[int, str]]} -- 0 {int}: Maximum number of coffees - 1 {set}: Limiters
         """
+
+        for ingredient in self.ingredients:
+            limited_ingredients.setdefault(ingredient, 0)
+
         amount_of_coffees: Dict[str, int] = {
             ingredient: self.coffees_possible_ingredient(ingredient, amount)
             for ingredient, amount in limited_ingredients.items()
-            if ingredient in self.ingredients
+            if ingredient in self.ingredients and amount >= 0
         }
 
         possible_ingredients: Dict[int, Set[str]] = {}
@@ -79,3 +85,9 @@ class CoffeeCreator(Coffee):
         max_possible: int = min(possible_ingredients.keys())
 
         return (max_possible, possible_ingredients[max_possible])
+
+
+if __name__ == "__main__":
+    regular = CoffeeCreator("Regular", {"water": 200, "milk": 20, "beans": 5}, 6)
+    print(regular.limiting_ingredient({"water": 200, "milk": 20}))
+

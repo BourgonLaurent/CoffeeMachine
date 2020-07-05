@@ -88,6 +88,10 @@ class CoffeeWindow(QMainWindow):
         self.ui.milkSelector.textEdited.connect(self.setFromIngredients)
         self.ui.beansSelector.textEdited.connect(self.setFromIngredients)
 
+        self.ui.waterInfinityCheckBox.stateChanged.connect(self.setFromIngredients)
+        self.ui.milkInfinityCheckBox.stateChanged.connect(self.setFromIngredients)
+        self.ui.beansInfinityCheckBox.stateChanged.connect(self.setFromIngredients)
+
         self.ui.priceSelector.textEdited.connect(self.setFromPrice)
 
     def setFromCoffee(self, number_of_coffees: int):
@@ -107,7 +111,38 @@ class CoffeeWindow(QMainWindow):
             checkbox.setChecked(not word == "coffee")
 
     def setFromIngredients(self):
-        pass
+        limited_ingredients: Dict[str, int] = dict()
+
+        for word, selector in self.wordToSelector.items():
+            if word not in ("coffee", "price"):
+                s_text = selector.text().strip()
+                limited_ingredients[word] = int(s_text if s_text else 0)
+
+        infinity_checked = {
+            word: checkbox.isChecked()
+            for word, checkbox in self.wordToInfinity.items()
+            if word not in ("coffee", "price")
+        }
+
+        for word in limited_ingredients:
+            if infinity_checked[word]:
+                limited_ingredients[word] = -1
+
+        print(limited_ingredients)
+
+        limited_coffees = self.current_coffee.limiting_ingredient(limited_ingredients)
+        min_ingredient = self.current_coffee.ingredients_needed(limited_coffees[0])
+
+        print(f"{limited_coffees}: {min_ingredient}")
+
+        print(infinity_checked)
+
+        # for word, checkbox in self.wordToInfinity.items():
+        #     if word in ("milk", "water", "beans"):
+        #         if checkbox.isChecked():
+        #             self.wordToSelector[word].setText(str(min_ingredient[word]))
+        #     else:
+        #         checkbox.setChecked(False)
 
     def setFromPrice(self, money: int):
         if not money:
@@ -118,9 +153,9 @@ class CoffeeWindow(QMainWindow):
         ingredients["coffee"] = number_of_coffees
         for word, selector in self.wordToSelector.items():
             if word == "coffee":
-                selector.setText(str(ingredients[word]))
+                selector.setText(str(ingredients.get(word, 0)))
             elif not word == "price":
-                selector.setText(str(ingredients[word]))
+                selector.setText(str(ingredients.get(word, 0)))
 
         for word, checkbox in self.wordToInfinity.items():
             checkbox.setChecked(not word == "price")

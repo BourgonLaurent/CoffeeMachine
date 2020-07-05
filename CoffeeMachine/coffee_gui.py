@@ -20,7 +20,7 @@ class CoffeeMachine(QApplication):
     """## Tweaked QApplication for CoffeeMachine
 
     ### Methods:\n
-      .exec_() -- Run the instance
+    .exec_() -- Run the instance
     """
 
     def __init__(self, coffees: List[CoffeeCreator] = None):
@@ -41,7 +41,7 @@ class CoffeeWindow(QMainWindow):
     """## Tweak QMainWindow for CoffeeMachine
 
     ### Attributes:\n
-      .ui -- GUI Elements set with Qt Designer
+    .ui -- GUI Elements set with Qt Designer
     """
 
     def __init__(self, parent: CoffeeMachine):

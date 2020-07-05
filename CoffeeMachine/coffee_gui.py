@@ -57,17 +57,21 @@ class CoffeeWindow(QMainWindow):
         self._enableConnections()
 
         self.wordToSelector: Dict[str, QLineEdit] = {
+            "coffee": self.ui.coffeeSelector,
             "water": self.ui.waterSelector,
             "milk": self.ui.milkSelector,
             "beans": self.ui.beansSelector,
             "price": self.ui.priceSelector,
         }
 
-        self.ui.coffeeSelectionSvg.load("assets/logo.svg")
-        self.ui.waterSelectionSvg.load("assets/faucet-drip.svg")
-        self.ui.milkSelectionSvg.load("assets/cow.svg")
-        self.ui.beansSelectionSvg.load("assets/coffee-beans.svg")
-        self.ui.priceSelectionSvg.load("assets/usd-square.svg")
+        for svg, asset in {
+            self.ui.coffeeSelectionSvg: "assets/logo.svg",
+            self.ui.waterSelectionSvg: "assets/faucet-drip.svg",
+            self.ui.milkSelectionSvg: "assets/cow.svg",
+            self.ui.beansSelectionSvg: "assets/coffee-beans.svg",
+            self.ui.priceSelectionSvg: "assets/usd-square.svg",
+        }.items():
+            svg.load(asset)
 
     def _enableConnections(self):
         self.ui.coffeeSelector.textChanged.connect(self.setFromCoffee)
@@ -80,4 +84,5 @@ class CoffeeWindow(QMainWindow):
         ingredients["price"] = self.current_coffee.final_cost(number_of_coffees)
 
         for word, selector in self.wordToSelector.items():
-            selector.setText(str(ingredients[word]).zfill(3))
+            if not word == "coffee":
+                selector.setText(str(ingredients[word]).zfill(3))

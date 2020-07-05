@@ -4,7 +4,8 @@
 # Librairies
 import os
 from typing import List, Dict
-from PySide2.QtWidgets import QApplication, QCheckBox, QLineEdit, QMainWindow
+from PySide2.QtWidgets import QApplication, QCheckBox, QLineEdit, QMainWindow, QLabel
+from PySide2.QtCore import Slot
 
 # Project
 from . import __version__
@@ -66,9 +67,17 @@ class CoffeeWindow(QMainWindow):
             "beans": self.ui.beansInfinityCheckBox,
             "price": self.ui.priceInfinityCheckBox,
         }
+        self.wordToStatus: Dict[str, QLabel] = {
+            "coffee": self.ui.coffeeStatusLabel,
+            "water": self.ui.waterStatusLabel,
+            "milk": self.ui.milkStatusLabel,
+            "beans": self.ui.beansStatusLabel,
+            "price": self.ui.priceStatusLabel,
+        }
 
         self._loadSVG()
         self._enableConnections()
+
         self.setFromCoffee(1)
 
     def _loadSVG(self):
@@ -84,17 +93,35 @@ class CoffeeWindow(QMainWindow):
     def _enableConnections(self):
         self.ui.coffeeSelector.textEdited.connect(self.setFromCoffee)
 
-        self.ui.waterSelector.textEdited.connect(self.setFromIngredients)
-        self.ui.milkSelector.textEdited.connect(self.setFromIngredients)
-        self.ui.beansSelector.textEdited.connect(self.setFromIngredients)
+        self.ui.waterSelector.textEdited.connect(
+            lambda: self.setFromIngredients("water", "lineedit")
+        )
+        self.ui.milkSelector.textEdited.connect(
+            lambda: self.setFromIngredients("milk", "lineedit")
+        )
+        self.ui.beansSelector.textEdited.connect(
+            lambda: self.setFromIngredients("beans", "lineedit")
+        )
 
-        self.ui.waterInfinityCheckBox.stateChanged.connect(self.setFromIngredients)
-        self.ui.milkInfinityCheckBox.stateChanged.connect(self.setFromIngredients)
-        self.ui.beansInfinityCheckBox.stateChanged.connect(self.setFromIngredients)
+        self.ui.waterInfinityCheckBox.clicked.connect(
+            lambda: self.setFromIngredients("water", "checkbox")
+        )
+        self.ui.milkInfinityCheckBox.clicked.connect(
+            lambda: self.setFromIngredients("milk", "checkbox")
+        )
+        self.ui.beansInfinityCheckBox.clicked.connect(
+            lambda: self.setFromIngredients("beans", "checkbox")
+        )
 
         self.ui.priceSelector.textEdited.connect(self.setFromPrice)
 
+    def cleanup(self):
+        for label in self.wordToStatus.values():
+            label.setText("")
+
+    @Slot()  # type: ignore
     def setFromCoffee(self, number_of_coffees: int):
+        self.cleanup()
         if not number_of_coffees:
             number_of_coffees = 0
 
@@ -108,9 +135,17 @@ class CoffeeWindow(QMainWindow):
                 selector.setText(str(ingredients[word]))
 
         for word, checkbox in self.wordToInfinity.items():
+            checkbox.setCheckable(True)
             checkbox.setChecked(not word == "coffee")
 
-    def setFromIngredients(self):
+    @Slot()  # type: ignore
+    def setFromIngredients(self, ingredient_changed: str = "", component: str = ""):
+        print(ingredient_changed, component)
+
+        self.cleanup()
+        if ingredient_changed and component == "lineedit":
+            self.wordToInfinity[ingredient_changed].setChecked(False)
+
         limited_ingredients: Dict[str, int] = dict()
 
         for word, selector in self.wordToSelector.items():
@@ -124,27 +159,44 @@ class CoffeeWindow(QMainWindow):
             if word not in ("coffee", "price")
         }
 
+        limited = {
+            word: isChecked
+            for word, isChecked in infinity_checked.items()
+            if not isChecked
+        }
+
+        print(infinity_checked)
+        print(len(limited))
+        if len(limited) < 1:
+            for infinity in self.wordToInfinity.values():
+                infinity.setCheckable(True)
+            self.wordToInfinity[ingredient_changed].setCheckable(False)
+
         for word in limited_ingredients:
             if infinity_checked[word]:
                 limited_ingredients[word] = -1
 
-        print(limited_ingredients)
-
         limited_coffees = self.current_coffee.limiting_ingredient(limited_ingredients)
         min_ingredient = self.current_coffee.ingredients_needed(limited_coffees[0])
+        cost = self.current_coffee.final_cost(limited_coffees[0])
 
-        print(f"{limited_coffees}: {min_ingredient}")
+        for ingredient, isChecked in infinity_checked.items():
+            if isChecked:
+                self.wordToSelector[ingredient].setText(str(min_ingredient[ingredient]))
+            else:
+                for limiting_ingredient in limited_coffees[1]:
+                    self.wordToStatus[limiting_ingredient].setText("Limiting")
 
-        print(infinity_checked)
+        self.wordToSelector["coffee"].setText(str(limited_coffees[0]))
+        self.wordToSelector["price"].setText(str(cost))
 
-        # for word, checkbox in self.wordToInfinity.items():
-        #     if word in ("milk", "water", "beans"):
-        #         if checkbox.isChecked():
-        #             self.wordToSelector[word].setText(str(min_ingredient[word]))
-        #     else:
-        #         checkbox.setChecked(False)
+        for word, selector in self.wordToInfinity.items():
+            if word not in ("water", "milk", "beans"):
+                selector.setChecked(True)
 
+    @Slot()  # type: ignore
     def setFromPrice(self, money: int):
+        self.cleanup()
         if not money:
             money = 0
 
@@ -158,4 +210,6 @@ class CoffeeWindow(QMainWindow):
                 selector.setText(str(ingredients.get(word, 0)))
 
         for word, checkbox in self.wordToInfinity.items():
+            checkbox.setCheckable(True)
             checkbox.setChecked(not word == "price")
+

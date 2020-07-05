@@ -3,7 +3,6 @@
 
 # Librairies
 import os
-import sys
 from typing import List, Dict
 from PySide2.QtWidgets import QApplication, QLineEdit, QMainWindow
 

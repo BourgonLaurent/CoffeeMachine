@@ -2,34 +2,30 @@
 <ui version="4.0">
  <class>mainWindow</class>
  <widget class="QMainWindow" name="mainWindow">
-  <property name="enabled">
-   <bool>true</bool>
-  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>795</width>
-    <height>570</height>
+    <height>596</height>
    </rect>
-  </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
     <width>795</width>
-    <height>570</height>
+    <height>596</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>795</width>
-    <height>570</height>
+    <height>596</height>
    </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>Segoe UI</family>
+   </font>
   </property>
   <property name="windowIcon">
    <iconset resource="coffee_interface_resources.qrc">
@@ -45,11 +41,7 @@ QGroupBox {
   border-radius: 14px;
 }
 
-QLabel#coffeeSelectionLabel,
-QLabel#waterSelectionLabel,
-QLabel#milkSelectionLabe,
-QLabel#beansSelectionLabel,
-QLabel#priceSelectionLabel {
+QLabel#coffeeSelectionLabel {
   font-family: Segoe UI;
   font-style: normal;
   font-weight: bold;
@@ -97,6 +89,18 @@ QCheckBox::indicator:unchecked {
 QPushButton#adminPanelLabel:pressed {
   background-color: #c2b7a6;
   border-radius: 14px;
+}
+
+QLabel#coffeeStatusLabel,
+QLabel#waterStatusLabel,
+QLabel#milkStatusLabel,
+QLabel#beansStatusLabel,
+QLabel#priceStatusLabel {
+  font-family: Segoe UI;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  color: #4E5884;
 }</string>
   </property>
   <widget class="QWidget" name="mainWidget">
@@ -110,9 +114,9 @@ QPushButton#adminPanelLabel:pressed {
     <property name="geometry">
      <rect>
       <x>17</x>
-      <y>23</y>
+      <y>20</y>
       <width>203</width>
-      <height>250</height>
+      <height>271</height>
      </rect>
     </property>
     <property name="title">
@@ -201,19 +205,36 @@ QPushButton#adminPanelLabel:pressed {
       </rect>
      </property>
     </widget>
+    <widget class="QLabel" name="coffeeStatusLabel">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>238</y>
+       <width>175</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
     <zorder>coffeeSelector</zorder>
     <zorder>coffeeSelectorSuffix</zorder>
     <zorder>coffeeInfinityCheckBox</zorder>
     <zorder>coffeeSelectionSvg</zorder>
     <zorder>coffeeSelectionLabel</zorder>
+    <zorder>coffeeStatusLabel</zorder>
    </widget>
    <widget class="QGroupBox" name="ingredientsGroupBox">
     <property name="geometry">
      <rect>
       <x>238</x>
-      <y>23</y>
+      <y>20</y>
       <width>541</width>
-      <height>250</height>
+      <height>271</height>
      </rect>
     </property>
     <property name="title">
@@ -309,7 +330,7 @@ QPushButton#adminPanelLabel:pressed {
     <widget class="QCheckBox" name="waterInfinityCheckBox">
      <property name="geometry">
       <rect>
-       <x>81</x>
+       <x>82</x>
        <y>210</y>
        <width>41</width>
        <height>21</height>
@@ -331,7 +352,7 @@ QPushButton#adminPanelLabel:pressed {
     <widget class="QCheckBox" name="milkInfinityCheckBox">
      <property name="geometry">
       <rect>
-       <x>249</x>
+       <x>255</x>
        <y>210</y>
        <width>41</width>
        <height>21</height>
@@ -353,7 +374,7 @@ QPushButton#adminPanelLabel:pressed {
     <widget class="QCheckBox" name="beansInfinityCheckBox">
      <property name="geometry">
       <rect>
-       <x>422</x>
+       <x>427</x>
        <y>210</y>
        <width>41</width>
        <height>21</height>
@@ -402,6 +423,54 @@ QPushButton#adminPanelLabel:pressed {
       </rect>
      </property>
     </widget>
+    <widget class="QLabel" name="waterStatusLabel">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>237</y>
+       <width>141</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="milkStatusLabel">
+     <property name="geometry">
+      <rect>
+       <x>203</x>
+       <y>237</y>
+       <width>141</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="beansStatusLabel">
+     <property name="geometry">
+      <rect>
+       <x>375</x>
+       <y>237</y>
+       <width>141</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
     <zorder>beansSelector</zorder>
     <zorder>waterSelector</zorder>
     <zorder>waterSelectorSuffix</zorder>
@@ -414,14 +483,17 @@ QPushButton#adminPanelLabel:pressed {
     <zorder>waterSelectionSvg</zorder>
     <zorder>milkSelectionSvg</zorder>
     <zorder>beansSelectionSvg</zorder>
+    <zorder>waterStatusLabel</zorder>
+    <zorder>milkStatusLabel</zorder>
+    <zorder>beansStatusLabel</zorder>
    </widget>
    <widget class="QGroupBox" name="priceGroupBox">
     <property name="geometry">
      <rect>
       <x>295</x>
-      <y>295</y>
+      <y>308</y>
       <width>203</width>
-      <height>250</height>
+      <height>271</height>
      </rect>
     </property>
     <property name="title">
@@ -488,16 +560,33 @@ QPushButton#adminPanelLabel:pressed {
       </rect>
      </property>
     </widget>
+    <widget class="QLabel" name="priceStatusLabel">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>238</y>
+       <width>175</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
     <zorder>priceSelector</zorder>
     <zorder>priceSelectorSuffix</zorder>
     <zorder>priceInfinityCheckBox</zorder>
     <zorder>priceSelectionSvg</zorder>
+    <zorder>priceStatusLabel</zorder>
    </widget>
    <widget class="QPushButton" name="adminPanelLabel">
     <property name="geometry">
      <rect>
-      <x>641</x>
-      <y>459</y>
+      <x>660</x>
+      <y>497</y>
       <width>121</width>
       <height>91</height>
      </rect>

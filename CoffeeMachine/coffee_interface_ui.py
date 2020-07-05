@@ -23,15 +23,12 @@ class Ui_mainWindow(object):
     def setupUi(self, mainWindow):
         if not mainWindow.objectName():
             mainWindow.setObjectName(u"mainWindow")
-        mainWindow.setEnabled(True)
-        mainWindow.resize(795, 570)
-        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Minimum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(mainWindow.sizePolicy().hasHeightForWidth())
-        mainWindow.setSizePolicy(sizePolicy)
-        mainWindow.setMinimumSize(QSize(795, 570))
-        mainWindow.setMaximumSize(QSize(795, 570))
+        mainWindow.resize(795, 596)
+        mainWindow.setMinimumSize(QSize(795, 596))
+        mainWindow.setMaximumSize(QSize(795, 596))
+        font = QFont()
+        font.setFamily(u"Segoe UI")
+        mainWindow.setFont(font)
         icon = QIcon()
         icon.addFile(u":/icons/assets/logo.svg", QSize(), QIcon.Normal, QIcon.Off)
         mainWindow.setWindowIcon(icon)
@@ -44,11 +41,7 @@ class Ui_mainWindow(object):
 "  border-radius: 14px;\n"
 "}\n"
 "\n"
-"QLabel#coffeeSelectionLabel,\n"
-"QLabel#waterSelectionLabel,\n"
-"QLabel#milkSelectionLabe,\n"
-"QLabel#beansSelectionLabel,\n"
-"QLabel#priceSelectionLabel {\n"
+"QLabel#coffeeSelectionLabel {\n"
 "  font-family: Segoe UI;\n"
 "  font-style: normal;\n"
 "  font-weight: bold;\n"
@@ -77,8 +70,7 @@ class Ui_mainWindow(object):
 "QLabel#beansSelectorSuffix,\n"
 "QLabel#priceSelectorSuffix {\n"
 "  font-family: Segoe UI;\n"
-"  fon"
-                        "t-size: 14px;\n"
+"  font-size: 14px;\n"
 "  color: #6F7987;\n"
 "}\n"
 "\n"
@@ -86,7 +78,8 @@ class Ui_mainWindow(object):
 "  background: none;\n"
 "}\n"
 "\n"
-"QCheckBox::indicator:checked {\n"
+"QCheck"
+                        "Box::indicator:checked {\n"
 "    image: url(:/icons/assets/infinity_on.svg);\n"
 "}\n"
 "\n"
@@ -97,26 +90,38 @@ class Ui_mainWindow(object):
 "QPushButton#adminPanelLabel:pressed {\n"
 "  background-color: #c2b7a6;\n"
 "  border-radius: 14px;\n"
+"}\n"
+"\n"
+"QLabel#coffeeStatusLabel,\n"
+"QLabel#waterStatusLabel,\n"
+"QLabel#milkStatusLabel,\n"
+"QLabel#beansStatusLabel,\n"
+"QLabel#priceStatusLabel {\n"
+"  font-family: Segoe UI;\n"
+"  font-style: normal;\n"
+"  font-weight: 500;\n"
+"  font-size: 15px;\n"
+"  color: #4E5884;\n"
 "}")
         self.mainWidget = QWidget(mainWindow)
         self.mainWidget.setObjectName(u"mainWidget")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.mainWidget.sizePolicy().hasHeightForWidth())
-        self.mainWidget.setSizePolicy(sizePolicy1)
+        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.mainWidget.sizePolicy().hasHeightForWidth())
+        self.mainWidget.setSizePolicy(sizePolicy)
         self.coffeeGroupBox = QGroupBox(self.mainWidget)
         self.coffeeGroupBox.setObjectName(u"coffeeGroupBox")
-        self.coffeeGroupBox.setGeometry(QRect(17, 23, 203, 250))
+        self.coffeeGroupBox.setGeometry(QRect(17, 20, 203, 271))
         self.coffeeSelectionLabel = QLabel(self.coffeeGroupBox)
         self.coffeeSelectionLabel.setObjectName(u"coffeeSelectionLabel")
         self.coffeeSelectionLabel.setGeometry(QRect(67, 85, 61, 31))
-        font = QFont()
-        font.setFamily(u"Segoe UI")
-        font.setBold(True)
-        font.setItalic(False)
-        font.setWeight(75)
-        self.coffeeSelectionLabel.setFont(font)
+        font1 = QFont()
+        font1.setFamily(u"Segoe UI")
+        font1.setBold(True)
+        font1.setItalic(False)
+        font1.setWeight(75)
+        self.coffeeSelectionLabel.setFont(font1)
         self.coffeeSelectionLabel.setAlignment(Qt.AlignCenter)
         self.coffeeSelector = QLineEdit(self.coffeeGroupBox)
         self.coffeeSelector.setObjectName(u"coffeeSelector")
@@ -132,14 +137,19 @@ class Ui_mainWindow(object):
         self.coffeeSelectionSvg = QSvgWidget(self.coffeeGroupBox)
         self.coffeeSelectionSvg.setObjectName(u"coffeeSelectionSvg")
         self.coffeeSelectionSvg.setGeometry(QRect(47, 26, 100, 114))
+        self.coffeeStatusLabel = QLabel(self.coffeeGroupBox)
+        self.coffeeStatusLabel.setObjectName(u"coffeeStatusLabel")
+        self.coffeeStatusLabel.setGeometry(QRect(16, 238, 175, 21))
+        self.coffeeStatusLabel.setAlignment(Qt.AlignCenter)
         self.coffeeSelector.raise_()
         self.coffeeSelectorSuffix.raise_()
         self.coffeeInfinityCheckBox.raise_()
         self.coffeeSelectionSvg.raise_()
         self.coffeeSelectionLabel.raise_()
+        self.coffeeStatusLabel.raise_()
         self.ingredientsGroupBox = QGroupBox(self.mainWidget)
         self.ingredientsGroupBox.setObjectName(u"ingredientsGroupBox")
-        self.ingredientsGroupBox.setGeometry(QRect(238, 23, 541, 250))
+        self.ingredientsGroupBox.setGeometry(QRect(238, 20, 541, 271))
         self.waterSelector = QLineEdit(self.ingredientsGroupBox)
         self.waterSelector.setObjectName(u"waterSelector")
         self.waterSelector.setGeometry(QRect(19, 157, 161, 38))
@@ -160,19 +170,19 @@ class Ui_mainWindow(object):
         self.beansSelector.setGeometry(QRect(363, 157, 161, 38))
         self.waterInfinityCheckBox = QCheckBox(self.ingredientsGroupBox)
         self.waterInfinityCheckBox.setObjectName(u"waterInfinityCheckBox")
-        self.waterInfinityCheckBox.setGeometry(QRect(81, 210, 41, 21))
+        self.waterInfinityCheckBox.setGeometry(QRect(82, 210, 41, 21))
         self.waterInfinityCheckBox.setCursor(QCursor(Qt.PointingHandCursor))
         self.waterInfinityCheckBox.setStyleSheet(u"")
         self.waterInfinityCheckBox.setChecked(True)
         self.milkInfinityCheckBox = QCheckBox(self.ingredientsGroupBox)
         self.milkInfinityCheckBox.setObjectName(u"milkInfinityCheckBox")
-        self.milkInfinityCheckBox.setGeometry(QRect(249, 210, 41, 21))
+        self.milkInfinityCheckBox.setGeometry(QRect(255, 210, 41, 21))
         self.milkInfinityCheckBox.setCursor(QCursor(Qt.PointingHandCursor))
         self.milkInfinityCheckBox.setStyleSheet(u"")
         self.milkInfinityCheckBox.setChecked(True)
         self.beansInfinityCheckBox = QCheckBox(self.ingredientsGroupBox)
         self.beansInfinityCheckBox.setObjectName(u"beansInfinityCheckBox")
-        self.beansInfinityCheckBox.setGeometry(QRect(422, 210, 41, 21))
+        self.beansInfinityCheckBox.setGeometry(QRect(427, 210, 41, 21))
         self.beansInfinityCheckBox.setCursor(QCursor(Qt.PointingHandCursor))
         self.beansInfinityCheckBox.setStyleSheet(u"")
         self.beansInfinityCheckBox.setChecked(True)
@@ -185,6 +195,18 @@ class Ui_mainWindow(object):
         self.beansSelectionSvg = QSvgWidget(self.ingredientsGroupBox)
         self.beansSelectionSvg.setObjectName(u"beansSelectionSvg")
         self.beansSelectionSvg.setGeometry(QRect(396, 41, 91, 91))
+        self.waterStatusLabel = QLabel(self.ingredientsGroupBox)
+        self.waterStatusLabel.setObjectName(u"waterStatusLabel")
+        self.waterStatusLabel.setGeometry(QRect(30, 237, 141, 21))
+        self.waterStatusLabel.setAlignment(Qt.AlignCenter)
+        self.milkStatusLabel = QLabel(self.ingredientsGroupBox)
+        self.milkStatusLabel.setObjectName(u"milkStatusLabel")
+        self.milkStatusLabel.setGeometry(QRect(203, 237, 141, 21))
+        self.milkStatusLabel.setAlignment(Qt.AlignCenter)
+        self.beansStatusLabel = QLabel(self.ingredientsGroupBox)
+        self.beansStatusLabel.setObjectName(u"beansStatusLabel")
+        self.beansStatusLabel.setGeometry(QRect(375, 237, 141, 21))
+        self.beansStatusLabel.setAlignment(Qt.AlignCenter)
         self.beansSelector.raise_()
         self.waterSelector.raise_()
         self.waterSelectorSuffix.raise_()
@@ -197,9 +219,12 @@ class Ui_mainWindow(object):
         self.waterSelectionSvg.raise_()
         self.milkSelectionSvg.raise_()
         self.beansSelectionSvg.raise_()
+        self.waterStatusLabel.raise_()
+        self.milkStatusLabel.raise_()
+        self.beansStatusLabel.raise_()
         self.priceGroupBox = QGroupBox(self.mainWidget)
         self.priceGroupBox.setObjectName(u"priceGroupBox")
-        self.priceGroupBox.setGeometry(QRect(295, 295, 203, 250))
+        self.priceGroupBox.setGeometry(QRect(295, 308, 203, 271))
         self.priceSelectorSuffix = QLabel(self.priceGroupBox)
         self.priceSelectorSuffix.setObjectName(u"priceSelectorSuffix")
         self.priceSelectorSuffix.setGeometry(QRect(138, 159, 21, 31))
@@ -215,13 +240,18 @@ class Ui_mainWindow(object):
         self.priceSelectionSvg = QSvgWidget(self.priceGroupBox)
         self.priceSelectionSvg.setObjectName(u"priceSelectionSvg")
         self.priceSelectionSvg.setGeometry(QRect(47, 29, 111, 111))
+        self.priceStatusLabel = QLabel(self.priceGroupBox)
+        self.priceStatusLabel.setObjectName(u"priceStatusLabel")
+        self.priceStatusLabel.setGeometry(QRect(16, 238, 175, 21))
+        self.priceStatusLabel.setAlignment(Qt.AlignCenter)
         self.priceSelector.raise_()
         self.priceSelectorSuffix.raise_()
         self.priceInfinityCheckBox.raise_()
         self.priceSelectionSvg.raise_()
+        self.priceStatusLabel.raise_()
         self.adminPanelLabel = QPushButton(self.mainWidget)
         self.adminPanelLabel.setObjectName(u"adminPanelLabel")
-        self.adminPanelLabel.setGeometry(QRect(641, 459, 121, 91))
+        self.adminPanelLabel.setGeometry(QRect(660, 497, 121, 91))
         icon1 = QIcon()
         icon1.addFile(u":/icons/assets/users-cog.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.adminPanelLabel.setIcon(icon1)
@@ -241,6 +271,7 @@ class Ui_mainWindow(object):
         self.coffeeSelector.setText(QCoreApplication.translate("mainWindow", u"1", None))
         self.coffeeSelectorSuffix.setText(QCoreApplication.translate("mainWindow", u"cup of coffee", None))
         self.coffeeInfinityCheckBox.setText("")
+        self.coffeeStatusLabel.setText("")
         self.ingredientsGroupBox.setTitle("")
         self.waterSelector.setInputMask(QCoreApplication.translate("mainWindow", u"99999", None))
         self.waterSelector.setText(QCoreApplication.translate("mainWindow", u"00001", None))
@@ -254,11 +285,15 @@ class Ui_mainWindow(object):
         self.waterInfinityCheckBox.setText("")
         self.milkInfinityCheckBox.setText("")
         self.beansInfinityCheckBox.setText("")
+        self.waterStatusLabel.setText("")
+        self.milkStatusLabel.setText("")
+        self.beansStatusLabel.setText("")
         self.priceGroupBox.setTitle("")
         self.priceSelectorSuffix.setText(QCoreApplication.translate("mainWindow", u"$", None))
         self.priceSelector.setInputMask(QCoreApplication.translate("mainWindow", u"99", None))
         self.priceSelector.setText(QCoreApplication.translate("mainWindow", u"01", None))
         self.priceInfinityCheckBox.setText("")
+        self.priceStatusLabel.setText("")
         pass
     # retranslateUi
 

@@ -4,7 +4,7 @@
 # Librairies
 import os
 from typing import List, Dict
-from PySide2.QtWidgets import QApplication, QLineEdit, QMainWindow
+from PySide2.QtWidgets import QApplication, QCheckBox, QLineEdit, QMainWindow
 
 # Project
 from . import __version__
@@ -52,9 +52,6 @@ class CoffeeWindow(QMainWindow):
         self.ui.setupUi(self)
 
         self.current_coffee: CoffeeCreator = self.parent.coffees[0]
-
-        self._enableConnections()
-
         self.wordToSelector: Dict[str, QLineEdit] = {
             "coffee": self.ui.coffeeSelector,
             "water": self.ui.waterSelector,
@@ -62,7 +59,19 @@ class CoffeeWindow(QMainWindow):
             "beans": self.ui.beansSelector,
             "price": self.ui.priceSelector,
         }
+        self.wordToInfinity: Dict[str, QCheckBox] = {
+            "coffee": self.ui.coffeeInfinityCheckBox,
+            "water": self.ui.waterInfinityCheckBox,
+            "milk": self.ui.milkInfinityCheckBox,
+            "beans": self.ui.beansInfinityCheckBox,
+            "price": self.ui.priceInfinityCheckBox,
+        }
 
+        self._loadSVG()
+        self._enableConnections()
+        self.setFromCoffee(1)
+
+    def _loadSVG(self):
         for svg, asset in {
             self.ui.coffeeSelectionSvg: "assets/logo.svg",
             self.ui.waterSelectionSvg: "assets/faucet-drip.svg",
@@ -73,7 +82,13 @@ class CoffeeWindow(QMainWindow):
             svg.load(asset)
 
     def _enableConnections(self):
-        self.ui.coffeeSelector.textChanged.connect(self.setFromCoffee)
+        self.ui.coffeeSelector.textEdited.connect(self.setFromCoffee)
+
+        self.ui.waterSelector.textEdited.connect(self.setFromIngredients)
+        self.ui.milkSelector.textEdited.connect(self.setFromIngredients)
+        self.ui.beansSelector.textEdited.connect(self.setFromIngredients)
+
+        self.ui.priceSelector.textEdited.connect(self.setFromPrice)
 
     def setFromCoffee(self, number_of_coffees: int):
         if not number_of_coffees:
@@ -83,5 +98,29 @@ class CoffeeWindow(QMainWindow):
         ingredients["price"] = self.current_coffee.final_cost(number_of_coffees)
 
         for word, selector in self.wordToSelector.items():
-            if not word == "coffee":
-                selector.setText(str(ingredients[word]).zfill(3))
+            if word == "price":
+                selector.setText(str(ingredients[word]))
+            elif not word == "coffee":
+                selector.setText(str(ingredients[word]))
+
+        for word, checkbox in self.wordToInfinity.items():
+            checkbox.setChecked(not word == "coffee")
+
+    def setFromIngredients(self):
+        pass
+
+    def setFromPrice(self, money: int):
+        if not money:
+            money = 0
+
+        number_of_coffees = self.current_coffee.coffees_possible_cost(money)
+        ingredients = self.current_coffee.ingredients_needed(number_of_coffees)
+        ingredients["coffee"] = number_of_coffees
+        for word, selector in self.wordToSelector.items():
+            if word == "coffee":
+                selector.setText(str(ingredients[word]))
+            elif not word == "price":
+                selector.setText(str(ingredients[word]))
+
+        for word, checkbox in self.wordToInfinity.items():
+            checkbox.setChecked(not word == "price")

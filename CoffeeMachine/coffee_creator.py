@@ -85,9 +85,3 @@ class CoffeeCreator(Coffee):
         max_possible: int = min(possible_ingredients.keys())
 
         return (max_possible, possible_ingredients[max_possible])
-
-
-if __name__ == "__main__":
-    regular = CoffeeCreator("Regular", {"water": 200, "milk": 20, "beans": 5}, 6)
-    print(regular.limiting_ingredient({"water": 200, "milk": 20}))
-

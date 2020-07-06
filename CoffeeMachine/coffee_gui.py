@@ -22,7 +22,7 @@ class CoffeeMachine(QApplication):
     .exec_() -- Run the instance
     """
 
-    def __init__(self, coffees: List[CoffeeCreator] = None):
+    def __init__(self, coffees: List[CoffeeCreator] = []):
         # qInitResources()
         super().__init__()
 

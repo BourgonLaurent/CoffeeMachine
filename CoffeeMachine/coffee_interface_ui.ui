@@ -279,10 +279,10 @@ QLabel#priceStatusLabel {
       </rect>
      </property>
      <property name="inputMask">
-      <string>99999</string>
+      <string>9999</string>
      </property>
      <property name="text">
-      <string>00001</string>
+      <string>0001</string>
      </property>
     </widget>
     <widget class="QLabel" name="milkSelectorSuffix">
@@ -321,10 +321,10 @@ QLabel#priceStatusLabel {
       </rect>
      </property>
      <property name="inputMask">
-      <string>99999</string>
+      <string>9999</string>
      </property>
      <property name="text">
-      <string>00001</string>
+      <string>0001</string>
      </property>
     </widget>
     <widget class="QCheckBox" name="waterInfinityCheckBox">

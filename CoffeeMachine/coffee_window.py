@@ -2,6 +2,7 @@
 # Main Window of coffee_gui
 
 # Librairies
+from CoffeeMachine.coffee_lang import STATUS_EXCEEDING, STATUS_LIMITING
 from typing import Dict
 from PySide2.QtWidgets import QCheckBox, QLineEdit, QMainWindow, QLabel
 from PySide2.QtCore import Slot
@@ -93,6 +94,15 @@ class CoffeeWindow(QMainWindow):
         for label in self.wordToStatus.values():
             label.setText("")
 
+    def checkAndSetExceeding(self, word: str, value: int):
+        print(
+            f"{len(str(value))} > {len(str(self.wordToSelector[word].inputMask()))} ({self.wordToSelector[word].inputMask()})"
+        )
+        if len(str(value)) > len(str(self.wordToSelector[word].inputMask())):
+            self.wordToStatus[word].setText(STATUS_EXCEEDING)
+
+        self.wordToSelector[word].setText(str(value))
+
     @Slot()  # type: ignore
     def setFromCoffee(self, number_of_coffees: int):
         self.cleanup()
@@ -103,10 +113,8 @@ class CoffeeWindow(QMainWindow):
         ingredients["price"] = self.current_coffee.final_cost(number_of_coffees)
 
         for word, selector in self.wordToSelector.items():
-            if word == "price":
-                selector.setText(str(ingredients[word]))
-            elif not word == "coffee":
-                selector.setText(str(ingredients[word]))
+            if not word == "coffee":
+                self.checkAndSetExceeding(word, ingredients[word])
 
         for word, checkbox in self.wordToInfinity.items():
             checkbox.setCheckable(True)
@@ -139,8 +147,6 @@ class CoffeeWindow(QMainWindow):
             if not isChecked
         }
 
-        print(infinity_checked)
-        print(len(limited))
         if len(limited) < 1:
             for infinity in self.wordToInfinity.values():
                 infinity.setCheckable(True)
@@ -156,13 +162,17 @@ class CoffeeWindow(QMainWindow):
 
         for ingredient, isChecked in infinity_checked.items():
             if isChecked:
-                self.wordToSelector[ingredient].setText(str(min_ingredient[ingredient]))
+                self.checkAndSetExceeding(ingredient, min_ingredient[ingredient])
+                # self.wordToSelector[ingredient].setText(str(min_ingredient[ingredient]))
             else:
                 for limiting_ingredient in limited_coffees[1]:
-                    self.wordToStatus[limiting_ingredient].setText("Limiting")
+                    self.wordToStatus[limiting_ingredient].setText(STATUS_LIMITING)
 
-        self.wordToSelector["coffee"].setText(str(limited_coffees[0]))
-        self.wordToSelector["price"].setText(str(cost))
+        self.checkAndSetExceeding("coffee", limited_coffees[0])
+        self.checkAndSetExceeding("price", cost)
+
+        # self.wordToSelector["coffee"].setText(str(limited_coffees[0]))
+        # self.wordToSelector["price"].setText(str(cost))
 
         for word, selector in self.wordToInfinity.items():
             if word not in ("water", "milk", "beans"):

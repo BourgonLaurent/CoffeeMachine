@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'coffee_interface_ui.ui'
+## Form generated from reading UI file 'coffee_window_ui.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.0
 ##
@@ -17,7 +17,7 @@ from PySide2.QtWidgets import *
 
 from PySide2.QtSvg import QSvgWidget
 
-from  . import coffee_interface_resources_rc
+from  . import coffee_window_resources_rc
 
 class Ui_mainWindow(object):
     def setupUi(self, mainWindow):
@@ -125,10 +125,10 @@ class Ui_mainWindow(object):
         self.coffeeSelectionLabel.setAlignment(Qt.AlignCenter)
         self.coffeeSelector = QLineEdit(self.coffeeGroupBox)
         self.coffeeSelector.setObjectName(u"coffeeSelector")
-        self.coffeeSelector.setGeometry(QRect(36, 157, 131, 38))
+        self.coffeeSelector.setGeometry(QRect(47, 157, 100, 38))
         self.coffeeSelectorSuffix = QLabel(self.coffeeGroupBox)
         self.coffeeSelectorSuffix.setObjectName(u"coffeeSelectorSuffix")
-        self.coffeeSelectorSuffix.setGeometry(QRect(79, 168, 81, 16))
+        self.coffeeSelectorSuffix.setGeometry(QRect(95, 168, 51, 16))
         self.coffeeInfinityCheckBox = QCheckBox(self.coffeeGroupBox)
         self.coffeeInfinityCheckBox.setObjectName(u"coffeeInfinityCheckBox")
         self.coffeeInfinityCheckBox.setGeometry(QRect(82, 210, 41, 21))
@@ -269,7 +269,7 @@ class Ui_mainWindow(object):
         self.coffeeSelectionLabel.setText(QCoreApplication.translate("mainWindow", u"Regular", None))
         self.coffeeSelector.setInputMask(QCoreApplication.translate("mainWindow", u"99", None))
         self.coffeeSelector.setText(QCoreApplication.translate("mainWindow", u"1", None))
-        self.coffeeSelectorSuffix.setText(QCoreApplication.translate("mainWindow", u"cup of coffee", None))
+        self.coffeeSelectorSuffix.setText(QCoreApplication.translate("mainWindow", u"coffees", None))
         self.coffeeInfinityCheckBox.setText("")
         self.coffeeStatusLabel.setText("")
         self.ingredientsGroupBox.setTitle("")

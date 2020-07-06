@@ -28,7 +28,7 @@
    </font>
   </property>
   <property name="windowIcon">
-   <iconset resource="coffee_interface_resources.qrc">
+   <iconset resource="coffee_window_resources.qrc">
     <normaloff>:/icons/assets/logo.svg</normaloff>:/icons/assets/logo.svg</iconset>
   </property>
   <property name="styleSheet">
@@ -150,9 +150,9 @@ QLabel#priceStatusLabel {
     <widget class="QLineEdit" name="coffeeSelector">
      <property name="geometry">
       <rect>
-       <x>36</x>
+       <x>47</x>
        <y>157</y>
-       <width>131</width>
+       <width>100</width>
        <height>38</height>
       </rect>
      </property>
@@ -166,14 +166,14 @@ QLabel#priceStatusLabel {
     <widget class="QLabel" name="coffeeSelectorSuffix">
      <property name="geometry">
       <rect>
-       <x>79</x>
+       <x>95</x>
        <y>168</y>
-       <width>81</width>
+       <width>51</width>
        <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>cup of coffee</string>
+      <string>coffees</string>
      </property>
     </widget>
     <widget class="QCheckBox" name="coffeeInfinityCheckBox">
@@ -592,7 +592,7 @@ QLabel#priceStatusLabel {
      </rect>
     </property>
     <property name="icon">
-     <iconset resource="coffee_interface_resources.qrc">
+     <iconset resource="coffee_window_resources.qrc">
       <normaloff>:/icons/assets/users-cog.svg</normaloff>:/icons/assets/users-cog.svg</iconset>
     </property>
     <property name="iconSize">
@@ -616,7 +616,7 @@ QLabel#priceStatusLabel {
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="coffee_interface_resources.qrc"/>
+  <include location="coffee_window_resources.qrc"/>
  </resources>
  <connections/>
 </ui>

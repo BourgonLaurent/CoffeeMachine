@@ -2,14 +2,14 @@
 # Main Window of coffee_gui
 
 # Librairies
-from CoffeeMachine.coffee_lang import STATUS_EXCEEDING, STATUS_LIMITING
 from typing import Dict
 from PySide2.QtWidgets import QCheckBox, QLineEdit, QMainWindow, QLabel
 from PySide2.QtCore import Slot
 
 # Project
-from .coffee_interface_ui import Ui_mainWindow
+from .coffee_window_ui import Ui_mainWindow
 from .coffee_creator import CoffeeCreator
+from .coffee_lang import STATUS_EXCEEDING, STATUS_LIMITING, WORDS
 
 
 class CoffeeWindow(QMainWindow):
@@ -51,6 +51,7 @@ class CoffeeWindow(QMainWindow):
         }
 
         self._loadSVG()
+        self._setLang()
         self._enableConnections()
 
         self.setFromCoffee(1)
@@ -64,6 +65,17 @@ class CoffeeWindow(QMainWindow):
             self.ui.priceSelectionSvg: "assets/usd-square.svg",
         }.items():
             svg.load(asset)
+
+    def _setLang(self):
+        wordToSuffix: Dict[str, QLabel] = {
+            "coffee": self.ui.coffeeSelectorSuffix,
+            "water": self.ui.waterSelectorSuffix,
+            "milk": self.ui.milkSelectorSuffix,
+            "beans": self.ui.beansSelectorSuffix,
+            "price": self.ui.priceSelectorSuffix,
+        }
+        for word, lang in WORDS.items():
+            wordToSuffix[word].setText(lang)
 
     def _enableConnections(self):
         self.ui.coffeeSelector.textEdited.connect(self.setFromCoffee)

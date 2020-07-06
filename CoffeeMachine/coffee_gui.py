@@ -23,7 +23,6 @@ class CoffeeMachine(QApplication):
     """
 
     def __init__(self, coffees: List[CoffeeCreator] = []):
-        # qInitResources()
         super().__init__()
 
         self.coffees: List[CoffeeCreator] = coffees if coffees else [

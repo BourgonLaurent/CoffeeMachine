@@ -7,7 +7,7 @@ os.chdir(os.path.realpath(__file__).replace(os.path.basename(__file__), ""))
 qrc = subprocess.run(
     [
         "pyside2-rcc",
-        "./CoffeeMachine/coffee_window_resources.qrc",
+        "./CoffeeMachine/ui/coffee_window_resources.qrc",
         "-o",
         "./CoffeeMachine/coffee_window_resources_rc.py",
     ]
@@ -16,7 +16,7 @@ qrc = subprocess.run(
 ui = subprocess.run(
     [
         "pyside2-uic",
-        "./CoffeeMachine/coffee_window_ui.ui",
+        "./CoffeeMachine/ui/coffee_window_ui.ui",
         "--from-imports",
         "-o",
         "./CoffeeMachine/coffee_window_ui.py",

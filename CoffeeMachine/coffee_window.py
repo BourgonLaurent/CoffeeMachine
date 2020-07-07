@@ -183,9 +183,6 @@ class CoffeeWindow(QMainWindow):
         self.checkAndSetExceeding("coffee", limited_coffees[0])
         self.checkAndSetExceeding("price", cost)
 
-        # self.wordToSelector["coffee"].setText(str(limited_coffees[0]))
-        # self.wordToSelector["price"].setText(str(cost))
-
         for word, selector in self.wordToInfinity.items():
             if word not in ("water", "milk", "beans"):
                 selector.setChecked(True)

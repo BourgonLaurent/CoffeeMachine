@@ -205,4 +205,3 @@ class CoffeeWindow(QMainWindow):
         for word, checkbox in self.wordToInfinity.items():
             checkbox.setCheckable(True)
             checkbox.setChecked(not word == "price")
-

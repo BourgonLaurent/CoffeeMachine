@@ -1,9 +1,9 @@
 import unittest
-from coffee_creator import CoffeeCreator
+from .coffee_creator import CoffeeCreator
 
 
 class TestCoffeeCreator(unittest.TestCase):
-    coffee = CoffeeCreator("Coffee1", {"water": 30, "milk": "25", "cocoa": 5}, 6.00)
+    coffee = CoffeeCreator("Coffee1", {"water": 30, "milk": "25", "cocoa": 5}, 6.00)  # type: ignore
 
     def test_init(self):
         # Test if conversions to string and ints was correct
@@ -21,7 +21,7 @@ class TestCoffeeCreator(unittest.TestCase):
         # Test if integer works
         self.assertEqual(self.coffee.final_cost(2), 6 * 2)
         # Test if float works
-        self.assertEqual(self.coffee.final_cost(3.5), 6 * 3)
+        self.assertEqual(self.coffee.final_cost(3.5), 6 * 3)  # type: ignore
 
     def test_ingredients_needed(self):
         # Test if integer works
@@ -30,7 +30,7 @@ class TestCoffeeCreator(unittest.TestCase):
         )
         # Test if float works
         self.assertEqual(
-            self.coffee.ingredients_needed(3.5), {"water": 30 * 3, "cocoa": 5 * 3}
+            self.coffee.ingredients_needed(3.5), {"water": 30 * 3, "cocoa": 5 * 3}  # type: ignore
         )
 
     def test_coffees_possible(self):
@@ -38,7 +38,7 @@ class TestCoffeeCreator(unittest.TestCase):
         self.assertEqual(self.coffee.coffees_possible_ingredient("water", 30 * 2), 2)
         self.assertEqual(self.coffee.coffees_possible_ingredient("cocoa", 5 * 2), 2)
         # Test if float works
-        self.assertEqual(self.coffee.coffees_possible_ingredient("water", 30 * 3.5), 3)
+        self.assertEqual(self.coffee.coffees_possible_ingredient("water", 30 * 3.5), 3)  # type: ignore
 
     def test_limiting_ingredients(self):
         # Test normally

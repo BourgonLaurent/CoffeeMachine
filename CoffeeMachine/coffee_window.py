@@ -78,29 +78,31 @@ class CoffeeWindow(QMainWindow):
             wordToSuffix[word].setText(lang)
 
     def _enableConnections(self):
-        self.ui.coffeeSelector.textEdited.connect(self.setFromCoffee)
+        ## TYPES HAS TO BE IGNORED SINCE PYSIDE2 DOESN'T CONTAIN THE SIGNAL BINDINGS
 
-        self.ui.waterSelector.textEdited.connect(
+        self.ui.coffeeSelector.textEdited.connect(self.setFromCoffee)  # type: ignore
+
+        self.ui.waterSelector.textEdited.connect(  # type: ignore
             lambda: self.setFromIngredients("water", "lineedit")
         )
-        self.ui.milkSelector.textEdited.connect(
+        self.ui.milkSelector.textEdited.connect(  # type: ignore
             lambda: self.setFromIngredients("milk", "lineedit")
         )
-        self.ui.beansSelector.textEdited.connect(
+        self.ui.beansSelector.textEdited.connect(  # type: ignore
             lambda: self.setFromIngredients("beans", "lineedit")
         )
 
-        self.ui.waterInfinityCheckBox.clicked.connect(
+        self.ui.waterInfinityCheckBox.clicked.connect(  # type: ignore
             lambda: self.setFromIngredients("water", "checkbox")
         )
-        self.ui.milkInfinityCheckBox.clicked.connect(
+        self.ui.milkInfinityCheckBox.clicked.connect(  # type: ignore
             lambda: self.setFromIngredients("milk", "checkbox")
         )
-        self.ui.beansInfinityCheckBox.clicked.connect(
+        self.ui.beansInfinityCheckBox.clicked.connect(  # type: ignore
             lambda: self.setFromIngredients("beans", "checkbox")
         )
 
-        self.ui.priceSelector.textEdited.connect(self.setFromPrice)
+        self.ui.priceSelector.textEdited.connect(self.setFromPrice)  # type: ignore
 
     def cleanup(self):
         for label in self.wordToStatus.values():

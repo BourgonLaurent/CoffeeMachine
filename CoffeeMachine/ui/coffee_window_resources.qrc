@@ -1,12 +1,7 @@
 <RCC>
   <qresource prefix="icons">
-    <file>assets/usd-square.svg</file>
-    <file>assets/coffee-beans.svg</file>
-    <file>assets/cow.svg</file>
-    <file>assets/faucet-drip.svg</file>
     <file>assets/infinity_off.svg</file>
     <file>assets/infinity_on.svg</file>
     <file>assets/logo.svg</file>
-    <file>assets/users-cog.svg</file>
   </qresource>
 </RCC>

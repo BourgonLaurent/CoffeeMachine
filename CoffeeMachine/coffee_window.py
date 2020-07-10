@@ -58,11 +58,11 @@ class CoffeeWindow(QMainWindow):
 
     def _loadSVG(self):
         for svg, asset in {
-            self.ui.coffeeSelectionSvg: "assets/logo.svg",
-            self.ui.waterSelectionSvg: "assets/faucet-drip.svg",
-            self.ui.milkSelectionSvg: "assets/cow.svg",
-            self.ui.beansSelectionSvg: "assets/coffee-beans.svg",
-            self.ui.priceSelectionSvg: "assets/usd-square.svg",
+            self.ui.coffeeSelectionSvg: "ui/assets/logo.svg",
+            self.ui.waterSelectionSvg: "ui/assets/faucet-drip.svg",
+            self.ui.milkSelectionSvg: "ui/assets/cow.svg",
+            self.ui.beansSelectionSvg: "ui/assets/coffee-beans.svg",
+            self.ui.priceSelectionSvg: "ui/assets/usd-square.svg",
         }.items():
             svg.load(asset)
 

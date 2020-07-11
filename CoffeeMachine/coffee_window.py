@@ -2,15 +2,14 @@
 # Main Window of coffee_gui
 
 # Librairies
-from CoffeeMachine.ui.IngredientSelector import IngredientSelector
 from typing import Dict
 from PySide2.QtWidgets import QCheckBox, QMainWindow, QLabel
-from PySide2.QtCore import Slot
 
 # Project
 from .coffee_window_ui import Ui_mainWindow
 from .coffee_creator import CoffeeCreator
 from .coffee_lang import STATUS_LIMITING, WORDS, ICONS
+from .ui.IngredientWidgets import IngredientInfinity, IngredientSelector
 
 
 class CoffeeWindow(QMainWindow):
@@ -36,7 +35,7 @@ class CoffeeWindow(QMainWindow):
             "beans": self.ui.beansSelector,
             "price": self.ui.priceSelector,
         }
-        self.wordToInfinity: Dict[str, QCheckBox] = {
+        self.wordToInfinity: Dict[str, IngredientInfinity] = {
             "coffee": self.ui.coffeeInfinityCheckBox,
             "water": self.ui.waterInfinityCheckBox,
             "milk": self.ui.milkInfinityCheckBox,
@@ -79,8 +78,6 @@ class CoffeeWindow(QMainWindow):
             wordToSuffix[word].setText(lang)
 
     def _enableConnections(self):
-        ## TYPES HAS TO BE IGNORED SINCE PYSIDE2 DOESN'T CONTAIN THE SIGNAL BINDINGS
-
         self.ui.coffeeSelector.textEdited.connect(self.setFromCoffee)
 
         self.ui.waterSelector.textEdited.connect(
@@ -93,13 +90,13 @@ class CoffeeWindow(QMainWindow):
             lambda: self.setFromIngredients("beans", "lineedit")
         )
 
-        self.ui.waterInfinityCheckBox.clicked.connect(  # type: ignore
+        self.ui.waterInfinityCheckBox.clicked.connect(
             lambda: self.setFromIngredients("water", "checkbox")
         )
-        self.ui.milkInfinityCheckBox.clicked.connect(  # type: ignore
+        self.ui.milkInfinityCheckBox.clicked.connect(
             lambda: self.setFromIngredients("milk", "checkbox")
         )
-        self.ui.beansInfinityCheckBox.clicked.connect(  # type: ignore
+        self.ui.beansInfinityCheckBox.clicked.connect(
             lambda: self.setFromIngredients("beans", "checkbox")
         )
 
@@ -109,7 +106,6 @@ class CoffeeWindow(QMainWindow):
         for label in self.wordToStatus.values():
             label.setText("")
 
-    @Slot()  # type: ignore
     def setFromCoffee(self, number_of_coffees: int):
         self.cleanup()
         if not number_of_coffees:
@@ -126,7 +122,6 @@ class CoffeeWindow(QMainWindow):
             checkbox.setCheckable(True)
             checkbox.setChecked(not word == "coffee")
 
-    @Slot()  # type: ignore
     def setFromIngredients(self, ingredient_changed: str = "", component: str = ""):
         self.cleanup()
         if ingredient_changed and component == "lineedit":
@@ -178,7 +173,6 @@ class CoffeeWindow(QMainWindow):
             if word not in ("water", "milk", "beans"):
                 selector.setChecked(True)
 
-    @Slot()  # type: ignore
     def setFromPrice(self, money: int):
         self.cleanup()
         if not money:

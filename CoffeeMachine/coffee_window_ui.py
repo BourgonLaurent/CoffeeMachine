@@ -16,7 +16,8 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
 from PySide2.QtWidgets import *
 
 from PySide2.QtSvg import QSvgWidget
-from .ui.IngredientSelector import IngredientSelector
+from .ui.IngredientWidgets import IngredientSelector
+from .ui.IngredientWidgets import IngredientInfinity
 
 from  . import coffee_window_resources_rc
 
@@ -130,7 +131,7 @@ class Ui_mainWindow(object):
         self.coffeeSelectorSuffix = QLabel(self.coffeeGroupBox)
         self.coffeeSelectorSuffix.setObjectName(u"coffeeSelectorSuffix")
         self.coffeeSelectorSuffix.setGeometry(QRect(95, 168, 51, 16))
-        self.coffeeInfinityCheckBox = QCheckBox(self.coffeeGroupBox)
+        self.coffeeInfinityCheckBox = IngredientInfinity(self.coffeeGroupBox)
         self.coffeeInfinityCheckBox.setObjectName(u"coffeeInfinityCheckBox")
         self.coffeeInfinityCheckBox.setGeometry(QRect(82, 210, 41, 21))
         self.coffeeInfinityCheckBox.setCursor(QCursor(Qt.PointingHandCursor))
@@ -169,19 +170,19 @@ class Ui_mainWindow(object):
         self.beansSelector = IngredientSelector(self.ingredientsGroupBox)
         self.beansSelector.setObjectName(u"beansSelector")
         self.beansSelector.setGeometry(QRect(363, 157, 161, 38))
-        self.waterInfinityCheckBox = QCheckBox(self.ingredientsGroupBox)
+        self.waterInfinityCheckBox = IngredientInfinity(self.ingredientsGroupBox)
         self.waterInfinityCheckBox.setObjectName(u"waterInfinityCheckBox")
         self.waterInfinityCheckBox.setGeometry(QRect(82, 210, 41, 21))
         self.waterInfinityCheckBox.setCursor(QCursor(Qt.PointingHandCursor))
         self.waterInfinityCheckBox.setStyleSheet(u"")
         self.waterInfinityCheckBox.setChecked(True)
-        self.milkInfinityCheckBox = QCheckBox(self.ingredientsGroupBox)
+        self.milkInfinityCheckBox = IngredientInfinity(self.ingredientsGroupBox)
         self.milkInfinityCheckBox.setObjectName(u"milkInfinityCheckBox")
         self.milkInfinityCheckBox.setGeometry(QRect(255, 210, 41, 21))
         self.milkInfinityCheckBox.setCursor(QCursor(Qt.PointingHandCursor))
         self.milkInfinityCheckBox.setStyleSheet(u"")
         self.milkInfinityCheckBox.setChecked(True)
-        self.beansInfinityCheckBox = QCheckBox(self.ingredientsGroupBox)
+        self.beansInfinityCheckBox = IngredientInfinity(self.ingredientsGroupBox)
         self.beansInfinityCheckBox.setObjectName(u"beansInfinityCheckBox")
         self.beansInfinityCheckBox.setGeometry(QRect(427, 210, 41, 21))
         self.beansInfinityCheckBox.setCursor(QCursor(Qt.PointingHandCursor))
@@ -232,7 +233,7 @@ class Ui_mainWindow(object):
         self.priceSelector = IngredientSelector(self.priceGroupBox)
         self.priceSelector.setObjectName(u"priceSelector")
         self.priceSelector.setGeometry(QRect(48, 156, 111, 38))
-        self.priceInfinityCheckBox = QCheckBox(self.priceGroupBox)
+        self.priceInfinityCheckBox = IngredientInfinity(self.priceGroupBox)
         self.priceInfinityCheckBox.setObjectName(u"priceInfinityCheckBox")
         self.priceInfinityCheckBox.setGeometry(QRect(85, 209, 41, 21))
         self.priceInfinityCheckBox.setCursor(QCursor(Qt.PointingHandCursor))

@@ -176,7 +176,7 @@ QLabel#priceStatusLabel {
       <string>coffees</string>
      </property>
     </widget>
-    <widget class="QCheckBox" name="coffeeInfinityCheckBox">
+    <widget class="IngredientInfinity" name="coffeeInfinityCheckBox">
      <property name="geometry">
       <rect>
        <x>82</x>
@@ -327,7 +327,7 @@ QLabel#priceStatusLabel {
       <string>0001</string>
      </property>
     </widget>
-    <widget class="QCheckBox" name="waterInfinityCheckBox">
+    <widget class="IngredientInfinity" name="waterInfinityCheckBox">
      <property name="geometry">
       <rect>
        <x>82</x>
@@ -349,7 +349,7 @@ QLabel#priceStatusLabel {
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QCheckBox" name="milkInfinityCheckBox">
+    <widget class="IngredientInfinity" name="milkInfinityCheckBox">
      <property name="geometry">
       <rect>
        <x>255</x>
@@ -371,7 +371,7 @@ QLabel#priceStatusLabel {
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QCheckBox" name="beansInfinityCheckBox">
+    <widget class="IngredientInfinity" name="beansInfinityCheckBox">
      <property name="geometry">
       <rect>
        <x>427</x>
@@ -528,7 +528,7 @@ QLabel#priceStatusLabel {
       <string>001</string>
      </property>
     </widget>
-    <widget class="QCheckBox" name="priceInfinityCheckBox">
+    <widget class="IngredientInfinity" name="priceInfinityCheckBox">
      <property name="geometry">
       <rect>
        <x>85</x>
@@ -617,7 +617,12 @@ QLabel#priceStatusLabel {
   <customwidget>
    <class>IngredientSelector</class>
    <extends>QLineEdit</extends>
-   <header>/ui/IngredientSelector.h</header>
+   <header>/ui/IngredientWidgets.h</header>
+  </customwidget>
+  <customwidget>
+   <class>IngredientInfinity</class>
+   <extends>QCheckBox</extends>
+   <header>/ui/IngredientWidgets.h</header>
   </customwidget>
  </customwidgets>
  <resources>

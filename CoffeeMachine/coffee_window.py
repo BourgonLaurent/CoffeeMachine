@@ -6,7 +6,7 @@ from typing import Dict
 from PySide2.QtWidgets import QCheckBox, QMainWindow, QLabel
 
 # Project
-from .coffee_window_ui import Ui_mainWindow
+from .ui.coffee_window_ui import Ui_mainWindow
 from .coffee_creator import CoffeeCreator
 from .coffee_lang import STATUS_LIMITING, WORDS, ICONS
 from .ui.IngredientWidgets import IngredientInfinity, IngredientSelector

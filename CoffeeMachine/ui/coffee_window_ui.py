@@ -16,8 +16,8 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
 from PySide2.QtWidgets import *
 
 from PySide2.QtSvg import QSvgWidget
-from .ui.IngredientWidgets import IngredientSelector
-from .ui.IngredientWidgets import IngredientInfinity
+from .IngredientWidgets import IngredientSelector
+from .IngredientWidgets import IngredientInfinity
 
 from  . import coffee_window_resources_rc
 

@@ -9,7 +9,7 @@ qrc = subprocess.run(
         "pyside2-rcc",
         "./CoffeeMachine/ui/coffee_window_resources.qrc",
         "-o",
-        "./CoffeeMachine/coffee_window_resources_rc.py",
+        "./CoffeeMachine/ui/coffee_window_resources_rc.py",
     ]
 )
 
@@ -19,7 +19,7 @@ ui = subprocess.run(
         "./CoffeeMachine/ui/coffee_window_ui.ui",
         "--from-imports",
         "-o",
-        "./CoffeeMachine/coffee_window_ui.py",
+        "./CoffeeMachine/ui/coffee_window_ui.py",
     ]
 )
 

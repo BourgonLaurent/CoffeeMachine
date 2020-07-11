@@ -617,12 +617,12 @@ QLabel#priceStatusLabel {
   <customwidget>
    <class>IngredientSelector</class>
    <extends>QLineEdit</extends>
-   <header>/ui/IngredientWidgets.h</header>
+   <header>/IngredientWidgets.h</header>
   </customwidget>
   <customwidget>
    <class>IngredientInfinity</class>
    <extends>QCheckBox</extends>
-   <header>/ui/IngredientWidgets.h</header>
+   <header>/IngredientWidgets.h</header>
   </customwidget>
  </customwidgets>
  <resources>

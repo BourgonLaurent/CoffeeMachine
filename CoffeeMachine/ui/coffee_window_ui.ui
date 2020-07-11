@@ -259,7 +259,7 @@ QLabel#priceStatusLabel {
     <widget class="QLabel" name="waterSelectorSuffix">
      <property name="geometry">
       <rect>
-       <x>101</x>
+       <x>97</x>
        <y>168</y>
        <width>80</width>
        <height>16</height>
@@ -522,10 +522,10 @@ QLabel#priceStatusLabel {
       </rect>
      </property>
      <property name="inputMask">
-      <string>99</string>
+      <string>999</string>
      </property>
      <property name="text">
-      <string>01</string>
+      <string>001</string>
      </property>
     </widget>
     <widget class="QCheckBox" name="priceInfinityCheckBox">
@@ -592,7 +592,7 @@ QLabel#priceStatusLabel {
      </rect>
     </property>
     <property name="icon">
-     <iconset>
+     <iconset resource="coffee_window_resources.qrc">
       <normaloff>:/icons/assets/users-cog.svg</normaloff>:/icons/assets/users-cog.svg</iconset>
     </property>
     <property name="iconSize">

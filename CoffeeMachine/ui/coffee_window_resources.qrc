@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icons">
+    <file>assets/users-cog.svg</file>
     <file>assets/infinity_off.svg</file>
     <file>assets/infinity_on.svg</file>
     <file>assets/logo.svg</file>

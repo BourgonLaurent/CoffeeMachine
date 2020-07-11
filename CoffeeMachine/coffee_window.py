@@ -9,7 +9,7 @@ from PySide2.QtCore import Slot
 # Project
 from .coffee_window_ui import Ui_mainWindow
 from .coffee_creator import CoffeeCreator
-from .coffee_lang import STATUS_EXCEEDING, STATUS_LIMITING, WORDS
+from .coffee_lang import STATUS_EXCEEDING, STATUS_LIMITING, WORDS, ICONS
 
 
 class CoffeeWindow(QMainWindow):
@@ -199,10 +199,8 @@ class CoffeeWindow(QMainWindow):
         ingredients = self.current_coffee.ingredients_needed(number_of_coffees)
         ingredients["coffee"] = number_of_coffees
         for word, selector in self.wordToSelector.items():
-            if word == "coffee":
-                selector.setText(str(ingredients.get(word, 0)))
-            elif not word == "price":
-                selector.setText(str(ingredients.get(word, 0)))
+            if word != "price":
+                self.checkAndSetExceeding(word, ingredients.get(word, 0))
 
         for word, checkbox in self.wordToInfinity.items():
             checkbox.setCheckable(True)

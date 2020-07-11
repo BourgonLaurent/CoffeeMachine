@@ -1,4 +1,4 @@
-# coffee_lang.py
+## coffee_lang.py - CoffeeMachine
 # Language and words used by CoffeeMachine
 
 from typing import Dict

@@ -1,4 +1,4 @@
-# coffee_gui.py
+## coffee_gui.py - CoffeeMachine
 # Taking care of the connection between UI and modules
 
 # Librairies
@@ -23,9 +23,10 @@ class CoffeeMachine(QApplication):
     """
 
     def __init__(self, coffees: List[CoffeeCreator] = []):
-        super().__init__()
-        self.setStyle("Fusion")
+        super().__init__([])  # Create the app
+        self.setStyle("Fusion")  # Set the multi-platform theme
 
+        # Set coffees, if they don't exists, use some defaults
         self.coffees: List[CoffeeCreator] = coffees if coffees else [
             CoffeeCreator("Regular", {"water": 200, "milk": 20, "beans": 5}, 6)
         ]

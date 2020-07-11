@@ -1,4 +1,4 @@
-# coffee_window.py
+## coffee_window.py - CoffeeMachine
 # Main Window of coffee_gui
 
 # Librairies
@@ -11,7 +11,7 @@ from PySide2.QtCore import Slot
 # Project
 from .coffee_window_ui import Ui_mainWindow
 from .coffee_creator import CoffeeCreator
-from .coffee_lang import STATUS_EXCEEDING, STATUS_LIMITING, WORDS, ICONS
+from .coffee_lang import STATUS_LIMITING, WORDS, ICONS
 
 
 class CoffeeWindow(QMainWindow):
@@ -56,7 +56,7 @@ class CoffeeWindow(QMainWindow):
         self._setLang()
         self._enableConnections()
 
-        # self.setFromCoffee(1)
+        self.setFromCoffee(1)
 
     def _loadSVG(self):
         for svg, asset in {
@@ -82,15 +82,15 @@ class CoffeeWindow(QMainWindow):
     def _enableConnections(self):
         ## TYPES HAS TO BE IGNORED SINCE PYSIDE2 DOESN'T CONTAIN THE SIGNAL BINDINGS
 
-        self.ui.coffeeSelector.textEdited.connect(self.setFromCoffee)  # type: ignore
+        self.ui.coffeeSelector.textEdited.connect(self.setFromCoffee)
 
-        self.ui.waterSelector.textEdited.connect(  # type: ignore
+        self.ui.waterSelector.textEdited.connect(
             lambda: self.setFromIngredients("water", "lineedit")
         )
-        self.ui.milkSelector.textEdited.connect(  # type: ignore
+        self.ui.milkSelector.textEdited.connect(
             lambda: self.setFromIngredients("milk", "lineedit")
         )
-        self.ui.beansSelector.textEdited.connect(  # type: ignore
+        self.ui.beansSelector.textEdited.connect(
             lambda: self.setFromIngredients("beans", "lineedit")
         )
 
@@ -104,7 +104,7 @@ class CoffeeWindow(QMainWindow):
             lambda: self.setFromIngredients("beans", "checkbox")
         )
 
-        self.ui.priceSelector.textEdited.connect(self.setFromPrice)  # type: ignore
+        self.ui.priceSelector.textEdited.connect(self.setFromPrice)
 
     def cleanup(self):
         for label in self.wordToStatus.values():

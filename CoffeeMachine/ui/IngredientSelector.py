@@ -1,8 +1,13 @@
+## IngredientSelector.py - CoffeeMachine.ui
+# Custom QLineEdit for CoffeeMachine
+from PySide2.QtCore import SignalInstance
 from ..coffee_lang import STATUS_EXCEEDING
 from PySide2.QtWidgets import QLabel, QLineEdit
 
 
 class IngredientSelector(QLineEdit):
+    textEdited: SignalInstance
+
     def __init__(self, parent):
         super().__init__(parent)
 

@@ -28,7 +28,7 @@
    </font>
   </property>
   <property name="windowIcon">
-   <iconset resource="coffee_window_resources.qrc">
+   <iconset>
     <normaloff>:/icons/assets/logo.svg</normaloff>:/icons/assets/logo.svg</iconset>
   </property>
   <property name="styleSheet">
@@ -592,7 +592,7 @@ QLabel#priceStatusLabel {
      </rect>
     </property>
     <property name="icon">
-     <iconset resource="coffee_window_resources.qrc">
+     <iconset>
       <normaloff>:/icons/assets/users-cog.svg</normaloff>:/icons/assets/users-cog.svg</iconset>
     </property>
     <property name="iconSize">

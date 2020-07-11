@@ -147,7 +147,7 @@ QLabel#priceStatusLabel {
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLineEdit" name="coffeeSelector">
+    <widget class="IngredientSelector" name="coffeeSelector">
      <property name="geometry">
       <rect>
        <x>47</x>
@@ -240,7 +240,7 @@ QLabel#priceStatusLabel {
     <property name="title">
      <string/>
     </property>
-    <widget class="QLineEdit" name="waterSelector">
+    <widget class="IngredientSelector" name="waterSelector">
      <property name="geometry">
       <rect>
        <x>19</x>
@@ -269,7 +269,7 @@ QLabel#priceStatusLabel {
       <string>mL of water</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="milkSelector">
+    <widget class="IngredientSelector" name="milkSelector">
      <property name="geometry">
       <rect>
        <x>191</x>
@@ -311,7 +311,7 @@ QLabel#priceStatusLabel {
       <string>g of beans</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="beansSelector">
+    <widget class="IngredientSelector" name="beansSelector">
      <property name="geometry">
       <rect>
        <x>363</x>
@@ -512,7 +512,7 @@ QLabel#priceStatusLabel {
       <string>$</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="priceSelector">
+    <widget class="IngredientSelector" name="priceSelector">
      <property name="geometry">
       <rect>
        <x>48</x>
@@ -613,6 +613,11 @@ QLabel#priceStatusLabel {
    <extends>QWidget</extends>
    <header>PySide2.QtSvg</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>IngredientSelector</class>
+   <extends>QLineEdit</extends>
+   <header>/ui/IngredientSelector.h</header>
   </customwidget>
  </customwidgets>
  <resources>

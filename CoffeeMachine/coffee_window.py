@@ -2,9 +2,10 @@
 # Main Window of coffee_gui
 
 # Librairies
+from CoffeeMachine.ui.IngredientSelector import IngredientSelector
 from typing import Dict
 from types import MethodType
-from PySide2.QtWidgets import QCheckBox, QLineEdit, QMainWindow, QLabel
+from PySide2.QtWidgets import QCheckBox, QMainWindow, QLabel
 from PySide2.QtCore import Slot
 
 # Project
@@ -29,7 +30,7 @@ class CoffeeWindow(QMainWindow):
         self.ui.setupUi(self)
 
         self.current_coffee: CoffeeCreator = self.parent.coffees[0]
-        self.wordToSelector: Dict[str, QLineEdit] = {
+        self.wordToSelector: Dict[str, IngredientSelector] = {
             "coffee": self.ui.coffeeSelector,
             "water": self.ui.waterSelector,
             "milk": self.ui.milkSelector,
@@ -54,9 +55,8 @@ class CoffeeWindow(QMainWindow):
         self._loadSVG()
         self._setLang()
         self._enableConnections()
-        self._setExceedingMethod()
 
-        self.setFromCoffee(1)
+        # self.setFromCoffee(1)
 
     def _loadSVG(self):
         for svg, asset in {
@@ -106,16 +106,6 @@ class CoffeeWindow(QMainWindow):
 
         self.ui.priceSelector.textEdited.connect(self.setFromPrice)  # type: ignore
 
-    def _setExceedingMethod(self):
-        def checkExceedingAndSetText(_self: QLineEdit, value: int):
-            word = _self.objectName().replace("Selector", "")
-            if len(str(value)) > len(str(_self.inputMask())):
-                self.wordToStatus[word].setText(STATUS_EXCEEDING)
-            _self.setText(str(value))
-
-        for selector in self.wordToSelector.values():
-            selector.setSafeText = MethodType(checkExceedingAndSetText, selector)  # type: ignore
-
     def cleanup(self):
         for label in self.wordToStatus.values():
             label.setText("")
@@ -131,7 +121,7 @@ class CoffeeWindow(QMainWindow):
 
         for word, selector in self.wordToSelector.items():
             if not word == "coffee":
-                selector.setSafeText(ingredients[word])  # type: ignore
+                selector.setSafeText(ingredients[word])
 
         for word, checkbox in self.wordToInfinity.items():
             checkbox.setCheckable(True)
@@ -139,8 +129,6 @@ class CoffeeWindow(QMainWindow):
 
     @Slot()  # type: ignore
     def setFromIngredients(self, ingredient_changed: str = "", component: str = ""):
-        print(ingredient_changed, component)
-
         self.cleanup()
         if ingredient_changed and component == "lineedit":
             self.wordToInfinity[ingredient_changed].setChecked(False)
@@ -184,8 +172,8 @@ class CoffeeWindow(QMainWindow):
                 for limiting_ingredient in limited_coffees[1]:
                     self.wordToStatus[limiting_ingredient].setText(STATUS_LIMITING)
 
-        self.ui.coffeeSelector.setSafeText(limited_coffees[0])  # type: ignore
-        self.ui.priceSelector.setSafeText(cost)  # type: ignore
+        self.ui.coffeeSelector.setSafeText(limited_coffees[0])
+        self.ui.priceSelector.setSafeText(cost)
 
         for word, selector in self.wordToInfinity.items():
             if word not in ("water", "milk", "beans"):
@@ -202,7 +190,7 @@ class CoffeeWindow(QMainWindow):
         ingredients["coffee"] = number_of_coffees
         for word, selector in self.wordToSelector.items():
             if word != "price":
-                selector.setSafeText(ingredients.get(word, 0))  # type: ignore
+                selector.setSafeText(ingredients.get(word, 0))
 
         for word, checkbox in self.wordToInfinity.items():
             checkbox.setCheckable(True)

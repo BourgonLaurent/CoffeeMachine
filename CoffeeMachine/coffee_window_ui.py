@@ -16,6 +16,7 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
 from PySide2.QtWidgets import *
 
 from PySide2.QtSvg import QSvgWidget
+from .ui.IngredientSelector import IngredientSelector
 
 from  . import coffee_window_resources_rc
 
@@ -123,7 +124,7 @@ class Ui_mainWindow(object):
         font1.setWeight(75)
         self.coffeeSelectionLabel.setFont(font1)
         self.coffeeSelectionLabel.setAlignment(Qt.AlignCenter)
-        self.coffeeSelector = QLineEdit(self.coffeeGroupBox)
+        self.coffeeSelector = IngredientSelector(self.coffeeGroupBox)
         self.coffeeSelector.setObjectName(u"coffeeSelector")
         self.coffeeSelector.setGeometry(QRect(47, 157, 100, 38))
         self.coffeeSelectorSuffix = QLabel(self.coffeeGroupBox)
@@ -150,13 +151,13 @@ class Ui_mainWindow(object):
         self.ingredientsGroupBox = QGroupBox(self.mainWidget)
         self.ingredientsGroupBox.setObjectName(u"ingredientsGroupBox")
         self.ingredientsGroupBox.setGeometry(QRect(238, 20, 541, 271))
-        self.waterSelector = QLineEdit(self.ingredientsGroupBox)
+        self.waterSelector = IngredientSelector(self.ingredientsGroupBox)
         self.waterSelector.setObjectName(u"waterSelector")
         self.waterSelector.setGeometry(QRect(19, 157, 161, 38))
         self.waterSelectorSuffix = QLabel(self.ingredientsGroupBox)
         self.waterSelectorSuffix.setObjectName(u"waterSelectorSuffix")
         self.waterSelectorSuffix.setGeometry(QRect(97, 168, 80, 16))
-        self.milkSelector = QLineEdit(self.ingredientsGroupBox)
+        self.milkSelector = IngredientSelector(self.ingredientsGroupBox)
         self.milkSelector.setObjectName(u"milkSelector")
         self.milkSelector.setGeometry(QRect(191, 157, 161, 38))
         self.milkSelectorSuffix = QLabel(self.ingredientsGroupBox)
@@ -165,7 +166,7 @@ class Ui_mainWindow(object):
         self.beansSelectorSuffix = QLabel(self.ingredientsGroupBox)
         self.beansSelectorSuffix.setObjectName(u"beansSelectorSuffix")
         self.beansSelectorSuffix.setGeometry(QRect(446, 166, 80, 21))
-        self.beansSelector = QLineEdit(self.ingredientsGroupBox)
+        self.beansSelector = IngredientSelector(self.ingredientsGroupBox)
         self.beansSelector.setObjectName(u"beansSelector")
         self.beansSelector.setGeometry(QRect(363, 157, 161, 38))
         self.waterInfinityCheckBox = QCheckBox(self.ingredientsGroupBox)
@@ -228,7 +229,7 @@ class Ui_mainWindow(object):
         self.priceSelectorSuffix = QLabel(self.priceGroupBox)
         self.priceSelectorSuffix.setObjectName(u"priceSelectorSuffix")
         self.priceSelectorSuffix.setGeometry(QRect(138, 159, 21, 31))
-        self.priceSelector = QLineEdit(self.priceGroupBox)
+        self.priceSelector = IngredientSelector(self.priceGroupBox)
         self.priceSelector.setObjectName(u"priceSelector")
         self.priceSelector.setGeometry(QRect(48, 156, 111, 38))
         self.priceInfinityCheckBox = QCheckBox(self.priceGroupBox)

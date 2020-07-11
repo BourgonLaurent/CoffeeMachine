@@ -2,14 +2,15 @@
 # Main Window of coffee_gui
 
 # Librairies
-from typing import Dict
-from PySide2.QtWidgets import QCheckBox, QMainWindow, QLabel
+from typing import Dict, List
+from PySide2.QtWidgets import QMainWindow, QLabel
 
 # Project
 from .ui.coffee_window_ui import Ui_mainWindow
 from .coffee_creator import CoffeeCreator
 from .coffee_lang import STATUS_LIMITING, WORDS, ICONS
 from .ui.IngredientWidgets import IngredientInfinity, IngredientSelector
+from .ui.coffee_customize_dialog import CoffeeCustomizeDialog
 
 
 class CoffeeWindow(QMainWindow):
@@ -19,15 +20,23 @@ class CoffeeWindow(QMainWindow):
     .ui -- GUI Elements set with Qt Designer
     """
 
-    def __init__(self, parent):
+    def __init__(self, coffees: List[CoffeeCreator]):
         super().__init__()
-
-        self.parent = parent
 
         self.ui = Ui_mainWindow()
         self.ui.setupUi(self)
 
-        self.current_coffee: CoffeeCreator = self.parent.coffees[0]
+        self.current_coffee: CoffeeCreator = coffees[0]
+        self.ui.coffeeSelectionLabel.dialog.coffees = coffees
+
+        self._setDefinitions()
+        self._loadSVG()
+        self._setLang()
+        self._enableConnections()
+
+        self.setFromCoffee(1)
+
+    def _setDefinitions(self):
         self.wordToSelector: Dict[str, IngredientSelector] = {
             "coffee": self.ui.coffeeSelector,
             "water": self.ui.waterSelector,
@@ -49,12 +58,6 @@ class CoffeeWindow(QMainWindow):
             "beans": self.ui.beansStatusLabel,
             "price": self.ui.priceStatusLabel,
         }
-
-        self._loadSVG()
-        self._setLang()
-        self._enableConnections()
-
-        self.setFromCoffee(1)
 
     def _loadSVG(self):
         for svg, asset in {

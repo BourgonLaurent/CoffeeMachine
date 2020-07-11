@@ -28,7 +28,7 @@
    </font>
   </property>
   <property name="windowIcon">
-   <iconset>
+   <iconset resource="coffee_window_resources.qrc">
     <normaloff>:/icons/assets/logo.svg</normaloff>:/icons/assets/logo.svg</iconset>
   </property>
   <property name="styleSheet">
@@ -122,7 +122,7 @@ QLabel#priceStatusLabel {
     <property name="title">
      <string/>
     </property>
-    <widget class="QLabel" name="coffeeSelectionLabel">
+    <widget class="CustomizeDialogLabel" name="coffeeSelectionLabel">
      <property name="geometry">
       <rect>
        <x>67</x>
@@ -592,7 +592,7 @@ QLabel#priceStatusLabel {
      </rect>
     </property>
     <property name="icon">
-     <iconset>
+     <iconset resource="coffee_window_resources.qrc">
       <normaloff>:/icons/assets/users-cog.svg</normaloff>:/icons/assets/users-cog.svg</iconset>
     </property>
     <property name="iconSize">
@@ -623,6 +623,11 @@ QLabel#priceStatusLabel {
    <class>IngredientInfinity</class>
    <extends>QCheckBox</extends>
    <header>/IngredientWidgets.h</header>
+  </customwidget>
+  <customwidget>
+   <class>CustomizeDialogLabel</class>
+   <extends>QLabel</extends>
+   <header>/CustomizeDialogLabel.h</header>
   </customwidget>
  </customwidgets>
  <resources>

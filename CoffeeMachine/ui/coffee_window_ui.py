@@ -18,6 +18,7 @@ from PySide2.QtWidgets import *
 from PySide2.QtSvg import QSvgWidget
 from .IngredientWidgets import IngredientSelector
 from .IngredientWidgets import IngredientInfinity
+from .CustomizeDialogLabel import CustomizeDialogLabel
 
 from  . import coffee_window_resources_rc
 
@@ -115,7 +116,7 @@ class Ui_mainWindow(object):
         self.coffeeGroupBox = QGroupBox(self.mainWidget)
         self.coffeeGroupBox.setObjectName(u"coffeeGroupBox")
         self.coffeeGroupBox.setGeometry(QRect(17, 20, 203, 271))
-        self.coffeeSelectionLabel = QLabel(self.coffeeGroupBox)
+        self.coffeeSelectionLabel = CustomizeDialogLabel(self.coffeeGroupBox)
         self.coffeeSelectionLabel.setObjectName(u"coffeeSelectionLabel")
         self.coffeeSelectionLabel.setGeometry(QRect(67, 85, 61, 31))
         font1 = QFont()

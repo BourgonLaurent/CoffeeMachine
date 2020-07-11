@@ -31,7 +31,7 @@ class CoffeeMachine(QApplication):
             CoffeeCreator("Regular", {"water": 200, "milk": 20, "beans": 5}, 6)
         ]
 
-        self.window: CoffeeWindow = CoffeeWindow(self)
+        self.window: CoffeeWindow = CoffeeWindow(self.coffees)
         self.window.setWindowTitle(f"CoffeeMachine - {__version__}")
 
         self.window.show()

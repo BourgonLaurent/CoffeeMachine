@@ -15,7 +15,6 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
     QPixmap, QRadialGradient)
 from PySide2.QtWidgets import *
 
-from  . import dialog_rc
 
 class Ui_coffeeSelectionDialog(object):
     def setupUi(self, coffeeSelectionDialog):
@@ -57,8 +56,6 @@ class Ui_coffeeSelectionDialog(object):
 "  color: #6F7987;\n"
 "}")
         self.coffeeListWidget = QListWidget(coffeeSelectionDialog)
-        QListWidgetItem(self.coffeeListWidget)
-        QListWidgetItem(self.coffeeListWidget)
         self.coffeeListWidget.setObjectName(u"coffeeListWidget")
         self.coffeeListWidget.setGeometry(QRect(20, 20, 141, 221))
         self.coffeeListWidget.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
@@ -133,15 +130,6 @@ class Ui_coffeeSelectionDialog(object):
 
     def retranslateUi(self, coffeeSelectionDialog):
         coffeeSelectionDialog.setWindowTitle(QCoreApplication.translate("coffeeSelectionDialog", u"Dialog", None))
-
-        __sortingEnabled = self.coffeeListWidget.isSortingEnabled()
-        self.coffeeListWidget.setSortingEnabled(False)
-        ___qlistwidgetitem = self.coffeeListWidget.item(0)
-        ___qlistwidgetitem.setText(QCoreApplication.translate("coffeeSelectionDialog", u"Espresso", None));
-        ___qlistwidgetitem1 = self.coffeeListWidget.item(1)
-        ___qlistwidgetitem1.setText(QCoreApplication.translate("coffeeSelectionDialog", u"Regular", None));
-        self.coffeeListWidget.setSortingEnabled(__sortingEnabled)
-
         self.waterLabel.setText(QCoreApplication.translate("coffeeSelectionDialog", u"200 mL of water", None))
         self.milkLabel.setText(QCoreApplication.translate("coffeeSelectionDialog", u"20 mL of milk", None))
         self.beansLabel.setText(QCoreApplication.translate("coffeeSelectionDialog", u"5 g of beans", None))

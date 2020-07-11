@@ -161,7 +161,7 @@ class CoffeeWindow(QMainWindow):
 
         for ingredient, isChecked in infinity_checked.items():
             if isChecked:
-                self.wordToSelector[ingredient].setSafeText(min_ingredient[ingredient])  # type: ignore
+                self.wordToSelector[ingredient].setSafeText(min_ingredient[ingredient])
             else:
                 for limiting_ingredient in limited_coffees[1]:
                     self.wordToStatus[limiting_ingredient].setText(STATUS_LIMITING)

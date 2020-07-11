@@ -4,7 +4,6 @@
 # Librairies
 from CoffeeMachine.ui.IngredientSelector import IngredientSelector
 from typing import Dict
-from types import MethodType
 from PySide2.QtWidgets import QCheckBox, QMainWindow, QLabel
 from PySide2.QtCore import Slot
 

@@ -3,6 +3,7 @@
 
 # Librairies
 from typing import Dict
+from types import MethodType
 from PySide2.QtWidgets import QCheckBox, QLineEdit, QMainWindow, QLabel
 from PySide2.QtCore import Slot
 
@@ -53,6 +54,7 @@ class CoffeeWindow(QMainWindow):
         self._loadSVG()
         self._setLang()
         self._enableConnections()
+        self._setExceedingMethod()
 
         self.setFromCoffee(1)
 
@@ -104,18 +106,19 @@ class CoffeeWindow(QMainWindow):
 
         self.ui.priceSelector.textEdited.connect(self.setFromPrice)  # type: ignore
 
+    def _setExceedingMethod(self):
+        def checkExceedingAndSetText(_self: QLineEdit, value: int):
+            word = _self.objectName().replace("Selector", "")
+            if len(str(value)) > len(str(_self.inputMask())):
+                self.wordToStatus[word].setText(STATUS_EXCEEDING)
+            _self.setText(str(value))
+
+        for selector in self.wordToSelector.values():
+            selector.setSafeText = MethodType(checkExceedingAndSetText, selector)  # type: ignore
+
     def cleanup(self):
         for label in self.wordToStatus.values():
             label.setText("")
-
-    def checkAndSetExceeding(self, word: str, value: int):
-        print(
-            f"{len(str(value))} > {len(str(self.wordToSelector[word].inputMask()))} ({self.wordToSelector[word].inputMask()})"
-        )
-        if len(str(value)) > len(str(self.wordToSelector[word].inputMask())):
-            self.wordToStatus[word].setText(STATUS_EXCEEDING)
-
-        self.wordToSelector[word].setText(str(value))
 
     @Slot()  # type: ignore
     def setFromCoffee(self, number_of_coffees: int):
@@ -128,7 +131,7 @@ class CoffeeWindow(QMainWindow):
 
         for word, selector in self.wordToSelector.items():
             if not word == "coffee":
-                self.checkAndSetExceeding(word, ingredients[word])
+                selector.setSafeText(ingredients[word])  # type: ignore
 
         for word, checkbox in self.wordToInfinity.items():
             checkbox.setCheckable(True)
@@ -176,14 +179,13 @@ class CoffeeWindow(QMainWindow):
 
         for ingredient, isChecked in infinity_checked.items():
             if isChecked:
-                self.checkAndSetExceeding(ingredient, min_ingredient[ingredient])
-                # self.wordToSelector[ingredient].setText(str(min_ingredient[ingredient]))
+                self.wordToSelector[ingredient].setSafeText(min_ingredient[ingredient])  # type: ignore
             else:
                 for limiting_ingredient in limited_coffees[1]:
                     self.wordToStatus[limiting_ingredient].setText(STATUS_LIMITING)
 
-        self.checkAndSetExceeding("coffee", limited_coffees[0])
-        self.checkAndSetExceeding("price", cost)
+        self.ui.coffeeSelector.setSafeText(limited_coffees[0])  # type: ignore
+        self.ui.priceSelector.setSafeText(cost)  # type: ignore
 
         for word, selector in self.wordToInfinity.items():
             if word not in ("water", "milk", "beans"):
@@ -200,7 +202,7 @@ class CoffeeWindow(QMainWindow):
         ingredients["coffee"] = number_of_coffees
         for word, selector in self.wordToSelector.items():
             if word != "price":
-                self.checkAndSetExceeding(word, ingredients.get(word, 0))
+                selector.setSafeText(ingredients.get(word, 0))  # type: ignore
 
         for word, checkbox in self.wordToInfinity.items():
             checkbox.setCheckable(True)

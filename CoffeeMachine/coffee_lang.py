@@ -1,23 +1,26 @@
 # coffee_lang.py
 # Language and words used by CoffeeMachine
 
-UNITS_MILLILITERS = "mL"
-UNITS_GRAMS = "g"
-UNITS_CUPS = "cups"
+from typing import Dict
 
-WORDS = {
+UNITS_MILLILITERS: str = "mL"
+UNITS_GRAMS: str = "g"
+UNITS_CUPS: str = "cups"
+UNITS_CURRENCY: str = "$"
+
+WORDS: Dict[str, str] = {
     "coffee": f"coffees",
     "water": f"{UNITS_MILLILITERS} of water",
-    "milk": f"{UNITS_GRAMS} of milk",
+    "milk": f"{UNITS_MILLILITERS} of milk",
     "beans": f"{UNITS_GRAMS} of beans",
-    "price": "$",
+    "price": f"{UNITS_CURRENCY}",
 }
 
-STATUS_EXCEEDING = "Error: Value overflow"
-STATUS_LIMITING = "Limiting"
+STATUS_EXCEEDING: str = "Error: Value overflow"
+STATUS_LIMITING: str = "Limiting"
 
 
-ICONS = {
+ICONS: Dict[str, str] = {
     "coffee": "ui/assets/logo.svg",
     "water": "ui/assets/faucet-drip.svg",
     "milk": "ui/assets/cow.svg",

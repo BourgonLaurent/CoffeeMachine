@@ -24,6 +24,7 @@ class CoffeeMachine(QApplication):
 
     def __init__(self, coffees: List[CoffeeCreator] = []):
         super().__init__()
+        self.setStyle("Fusion")
 
         self.coffees: List[CoffeeCreator] = coffees if coffees else [
             CoffeeCreator("Regular", {"water": 200, "milk": 20, "beans": 5}, 6)

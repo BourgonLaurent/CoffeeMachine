@@ -22,4 +22,4 @@ class CustomizeDialogLabel(QLabel):
         return super().mousePressEvent(event)
 
     def openDialog(self):
-        self.dialog.exec_()
+        self.dialog.openDialog()

@@ -15,3 +15,6 @@ class CoffeeCustomizeDialog(QDialog):
         super().__init__()
         self.ui = Ui_coffeeSelectionDialog()
         self.ui.setupUi(self)
+
+    def openDialog(self):
+        self.exec_()

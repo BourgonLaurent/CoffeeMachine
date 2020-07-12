@@ -270,7 +270,7 @@ class Ui_mainWindow(object):
 
     def retranslateUi(self, mainWindow):
         self.coffeeGroupBox.setTitle("")
-        self.coffeeSelectionLabel.setText(QCoreApplication.translate("mainWindow", u"Regular", None))
+        self.coffeeSelectionLabel.setText(QCoreApplication.translate("mainWindow", u"Cappuccino", None))
         self.coffeeSelector.setInputMask(QCoreApplication.translate("mainWindow", u"99", None))
         self.coffeeSelector.setText(QCoreApplication.translate("mainWindow", u"1", None))
         self.coffeeSelectorSuffix.setText(QCoreApplication.translate("mainWindow", u"coffees", None))

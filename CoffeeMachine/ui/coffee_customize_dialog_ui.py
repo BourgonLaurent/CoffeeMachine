@@ -22,9 +22,9 @@ class Ui_coffeeSelectionDialog(object):
     def setupUi(self, coffeeSelectionDialog):
         if not coffeeSelectionDialog.objectName():
             coffeeSelectionDialog.setObjectName(u"coffeeSelectionDialog")
-        coffeeSelectionDialog.resize(412, 266)
-        coffeeSelectionDialog.setMinimumSize(QSize(412, 266))
-        coffeeSelectionDialog.setMaximumSize(QSize(412, 266))
+        coffeeSelectionDialog.resize(425, 266)
+        coffeeSelectionDialog.setMinimumSize(QSize(425, 266))
+        coffeeSelectionDialog.setMaximumSize(QSize(425, 266))
         coffeeSelectionDialog.setStyleSheet(u"QDialog {\n"
 "  background-color: #C7CBD0;\n"
 "}\n"
@@ -66,7 +66,7 @@ class Ui_coffeeSelectionDialog(object):
         self.coffeeListWidget.setSortingEnabled(True)
         self.formLayoutWidget = QWidget(coffeeSelectionDialog)
         self.formLayoutWidget.setObjectName(u"formLayoutWidget")
-        self.formLayoutWidget.setGeometry(QRect(220, 20, 171, 222))
+        self.formLayoutWidget.setGeometry(QRect(220, 20, 191, 222))
         self.coffeeLayout = QFormLayout(self.formLayoutWidget)
         self.coffeeLayout.setObjectName(u"coffeeLayout")
         self.coffeeLayout.setLabelAlignment(Qt.AlignCenter)

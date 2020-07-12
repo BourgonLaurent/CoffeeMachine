@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>412</width>
+    <width>425</width>
     <height>266</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>412</width>
+    <width>425</width>
     <height>266</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>412</width>
+    <width>425</width>
     <height>266</height>
    </size>
   </property>
@@ -93,7 +93,7 @@ QLabel {
     <rect>
      <x>220</x>
      <y>20</y>
-     <width>171</width>
+     <width>191</width>
      <height>222</height>
     </rect>
    </property>

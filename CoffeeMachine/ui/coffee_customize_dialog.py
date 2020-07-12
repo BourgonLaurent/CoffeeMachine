@@ -5,7 +5,7 @@ from typing import List, Dict
 from PySide2.QtWidgets import QDialog, QListWidgetItem, QLabel
 from PySide2.QtCore import Qt
 
-from ..coffee_lang import ICONS
+from ..coffee_lang import ICONS, WORDS
 from ..coffee_creator import CoffeeCreator
 from .coffee_customize_dialog_ui import Ui_coffeeSelectionDialog
 
@@ -14,6 +14,7 @@ class CoffeeCustomizeDialog(QDialog):
     coffees: List[CoffeeCreator]
     current_coffee: CoffeeCreator
     label: QLabel
+    setFromCoffee = lambda x: x
 
     def __init__(self):
         super().__init__()
@@ -42,30 +43,33 @@ class CoffeeCustomizeDialog(QDialog):
             svg.load(icon)
 
     def selectionChanged(self):
-        # self.wordToCoffee: Dict[str, CoffeeCreator] = {c.name: c for c in self.coffees}
         current_coffee_item = self.ui.coffeeListWidget.currentItem()
+
         if not current_coffee_item:
             return
 
         for coffee in self.coffees:
             if coffee.name == current_coffee_item.text():
                 self.current_coffee = coffee
+                break
 
-        # self.current_coffee = self.wordToCoffee[current_coffee_item.text()]
+        values = {
+            **self.current_coffee.ingredients,
+            "price": self.current_coffee.price,
+        }
 
-        for word, ingredient in self.current_coffee.ingredients.items():
-            self.wordToLabel[word].setText(str(ingredient))
-
-        self.wordToLabel["price"].setText(str(self.current_coffee.price))
+        for word, label in self.wordToLabel.items():
+            label.setText(f"{values.get(word, 0)} {WORDS[word]}")
 
         self.label.setText(self.current_coffee.name)
+        self.setFromCoffee(1)
 
     def openDialog(self):
         self.ui.coffeeListWidget.clear()
 
         self.ui.coffeeListWidget.addItems([c.name for c in self.coffees])
 
-        current_coffee_item: QListWidgetItem = self.ui.coffeeListWidget.findItems("Regular", Qt.MatchExactly)[0]  # type: ignore
+        current_coffee_item: QListWidgetItem = self.ui.coffeeListWidget.findItems(self.current_coffee.name, Qt.MatchExactly)[0]  # type: ignore
         self.ui.coffeeListWidget.setItemSelected(current_coffee_item, True)
 
         self.exec_()

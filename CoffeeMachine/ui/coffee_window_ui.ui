@@ -144,7 +144,7 @@ QLabel#priceStatusLabel {
       <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="text">
-      <string>Regular</string>
+      <string>Cappuccino</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>

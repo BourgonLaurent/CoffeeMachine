@@ -29,8 +29,9 @@ class CoffeeWindow(QMainWindow):
         self.ui.coffeeSelectionLabel.dialog.current_coffee = coffees[0]
         self.ui.coffeeSelectionLabel.dialog.coffees = coffees
         self.ui.coffeeSelectionLabel.dialog.label = self.ui.coffeeSelectionLabel
+        self.ui.coffeeSelectionLabel.dialog.setFromCoffee = self.setFromCoffee
 
-        self.current_coffee = self.ui.coffeeSelectionLabel.dialog.current_coffee
+        self.current_coffee = lambda: self.ui.coffeeSelectionLabel.dialog.current_coffee
 
         self._setDefinitions()
         self._loadSVG()
@@ -117,12 +118,12 @@ class CoffeeWindow(QMainWindow):
         if not number_of_coffees:
             number_of_coffees = 0
 
-        ingredients = self.current_coffee.ingredients_needed(number_of_coffees)
-        ingredients["price"] = self.current_coffee.final_cost(number_of_coffees)
+        ingredients = self.current_coffee().ingredients_needed(number_of_coffees)
+        ingredients["price"] = self.current_coffee().final_cost(number_of_coffees)
 
         for word, selector in self.wordToSelector.items():
             if not word == "coffee":
-                selector.setSafeText(ingredients[word])
+                selector.setSafeText(ingredients.get(word, 0))
 
         for word, checkbox in self.wordToInfinity.items():
             checkbox.setCheckable(True)
@@ -161,13 +162,15 @@ class CoffeeWindow(QMainWindow):
             if infinity_checked[word]:
                 limited_ingredients[word] = -1
 
-        limited_coffees = self.current_coffee.limiting_ingredient(limited_ingredients)
-        min_ingredient = self.current_coffee.ingredients_needed(limited_coffees[0])
-        cost = self.current_coffee.final_cost(limited_coffees[0])
+        limited_coffees = self.current_coffee().limiting_ingredient(limited_ingredients)
+        min_ingredient = self.current_coffee().ingredients_needed(limited_coffees[0])
+        cost = self.current_coffee().final_cost(limited_coffees[0])
 
         for ingredient, isChecked in infinity_checked.items():
             if isChecked:
-                self.wordToSelector[ingredient].setSafeText(min_ingredient[ingredient])
+                self.wordToSelector[ingredient].setSafeText(
+                    min_ingredient.get(ingredient, 0)
+                )
             else:
                 for limiting_ingredient in limited_coffees[1]:
                     self.wordToStatus[limiting_ingredient].setText(STATUS_LIMITING)
@@ -184,8 +187,8 @@ class CoffeeWindow(QMainWindow):
         if not money:
             money = 0
 
-        number_of_coffees = self.current_coffee.coffees_possible_cost(money)
-        ingredients = self.current_coffee.ingredients_needed(number_of_coffees)
+        number_of_coffees = self.current_coffee().coffees_possible_cost(money)
+        ingredients = self.current_coffee().ingredients_needed(number_of_coffees)
         ingredients["coffee"] = number_of_coffees
         for word, selector in self.wordToSelector.items():
             if word != "price":

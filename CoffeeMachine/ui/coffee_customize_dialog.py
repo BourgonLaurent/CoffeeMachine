@@ -1,7 +1,7 @@
 ## coffee_customize_dialog.py - CoffeeMachine.ui
 # Dialog to select the coffee types
 
-from typing import List, Dict
+from typing import List, Dict, cast
 from PySide2.QtWidgets import QDialog, QListWidgetItem, QLabel
 from PySide2.QtCore import Qt
 

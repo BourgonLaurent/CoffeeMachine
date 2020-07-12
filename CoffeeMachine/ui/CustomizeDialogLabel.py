@@ -1,6 +1,7 @@
 ## CustomizeDialogLabel.py - CoffeeMachine.ui
 # Clicking label that activates a QDialog
 
+from typing import cast
 from PySide2.QtWidgets import QDialog, QGroupBox, QLabel
 from PySide2.QtCore import SignalInstance, Signal
 from PySide2.QtCore import SignalInstance
@@ -10,7 +11,7 @@ from .coffee_customize_dialog import CoffeeCustomizeDialog
 
 
 class CustomizeDialogLabel(QLabel):
-    clicked: SignalInstance = Signal()  # type: ignore
+    clicked = cast(SignalInstance, Signal())
 
     def __init__(self, parent=QGroupBox):
         super().__init__(parent)

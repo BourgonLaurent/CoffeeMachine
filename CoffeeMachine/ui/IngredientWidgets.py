@@ -1,9 +1,11 @@
 ## IngredientWidgets.py - CoffeeMachine.ui
 # Custom Widgets for CoffeeMachine
 
-from ..coffee_lang import STATUS_EXCEEDING
+from typing import cast
 from PySide2.QtWidgets import QCheckBox, QLabel, QLineEdit
-from PySide2.QtCore import SignalInstance
+from PySide2.QtCore import SignalInstance, Signal
+
+from ..coffee_lang import STATUS_EXCEEDING
 
 
 class IngredientSelector(QLineEdit):
@@ -14,17 +16,18 @@ class IngredientSelector(QLineEdit):
 
     def setSafeText(self, value: int):
         if len(str(value)) > len(str(self.inputMask())):
-            self.parent().findChild(
-                QLabel, f"{self.objectName().replace('Selector', '')}StatusLabel"
-            ).setText(  # type: ignore
-                STATUS_EXCEEDING
-            )
+            cast(
+                QLabel,
+                self.parent().findChild(
+                    QLabel, f"{self.objectName().replace('Selector', '')}StatusLabel"
+                ),
+            ).setText(STATUS_EXCEEDING)
 
         self.setText(str(value))
 
 
 class IngredientInfinity(QCheckBox):
-    clicked: SignalInstance
+    clicked = cast(SignalInstance, Signal())
 
     def __init__(self, parent):
         super().__init__(parent)

@@ -10,7 +10,6 @@ from .ui.coffee_window_ui import Ui_mainWindow
 from .coffee_creator import CoffeeCreator
 from .coffee_lang import STATUS_LIMITING, WORDS, ICONS
 from .ui.IngredientWidgets import IngredientInfinity, IngredientSelector
-from .ui.coffee_customize_dialog import CoffeeCustomizeDialog
 
 
 class CoffeeWindow(QMainWindow):

@@ -45,7 +45,7 @@ QLabel#coffeeSelectionLabel {
   font-family: Segoe UI;
   font-style: normal;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 11px;
   color: #BEA887;
 }
 

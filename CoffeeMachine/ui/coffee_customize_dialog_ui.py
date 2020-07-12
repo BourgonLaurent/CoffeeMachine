@@ -57,7 +57,6 @@ class Ui_coffeeSelectionDialog(object):
 "  color: #6F7987;\n"
 "}")
         self.coffeeListWidget = QListWidget(coffeeSelectionDialog)
-        QListWidgetItem(self.coffeeListWidget)
         self.coffeeListWidget.setObjectName(u"coffeeListWidget")
         self.coffeeListWidget.setGeometry(QRect(20, 20, 181, 221))
         self.coffeeListWidget.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
@@ -124,7 +123,7 @@ class Ui_coffeeSelectionDialog(object):
 
         self.retranslateUi(coffeeSelectionDialog)
 
-        self.coffeeListWidget.setCurrentRow(0)
+        self.coffeeListWidget.setCurrentRow(-1)
 
 
         QMetaObject.connectSlotsByName(coffeeSelectionDialog)
@@ -132,12 +131,5 @@ class Ui_coffeeSelectionDialog(object):
 
     def retranslateUi(self, coffeeSelectionDialog):
         coffeeSelectionDialog.setWindowTitle(QCoreApplication.translate("coffeeSelectionDialog", u"Select a coffee", None))
-
-        __sortingEnabled = self.coffeeListWidget.isSortingEnabled()
-        self.coffeeListWidget.setSortingEnabled(False)
-        ___qlistwidgetitem = self.coffeeListWidget.item(0)
-        ___qlistwidgetitem.setText(QCoreApplication.translate("coffeeSelectionDialog", u"Cappucino", None));
-        self.coffeeListWidget.setSortingEnabled(__sortingEnabled)
-
     # retranslateUi
 

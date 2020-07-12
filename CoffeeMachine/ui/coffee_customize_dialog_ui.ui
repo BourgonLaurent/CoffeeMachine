@@ -77,16 +77,11 @@ QLabel {
     <set>Qt::AlignCenter</set>
    </property>
    <property name="currentRow">
-    <number>0</number>
+    <number>-1</number>
    </property>
    <property name="sortingEnabled">
     <bool>true</bool>
    </property>
-   <item>
-    <property name="text">
-     <string>Cappucino</string>
-    </property>
-   </item>
   </widget>
   <widget class="QWidget" name="formLayoutWidget">
    <property name="geometry">

@@ -48,7 +48,7 @@ class Ui_mainWindow(object):
 "  font-family: Segoe UI;\n"
 "  font-style: normal;\n"
 "  font-weight: bold;\n"
-"  font-size: 15px;\n"
+"  font-size: 11px;\n"
 "  color: #BEA887;\n"
 "}\n"
 "\n"

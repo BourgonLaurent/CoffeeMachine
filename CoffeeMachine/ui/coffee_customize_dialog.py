@@ -14,7 +14,7 @@ class CoffeeCustomizeDialog(QDialog):
     coffees: List[CoffeeCreator]
     current_coffee: CoffeeCreator
     label: QLabel
-    setFromCoffee = lambda x: x
+    refresh = lambda: ...
 
     def __init__(self):
         super().__init__()
@@ -22,7 +22,7 @@ class CoffeeCustomizeDialog(QDialog):
         self.ui.setupUi(self)
 
         self.ui.coffeeListWidget.setFocusPolicy(Qt.NoFocus)  # type: ignore
-        self.ui.coffeeListWidget.itemSelectionChanged.connect(self.selectionChanged)  # type: ignore
+        self.ui.coffeeListWidget.itemSelectionChanged.connect(lambda: self.selectionChanged(self.ui.coffeeListWidget.currentItem()))  # type: ignore
 
         self.wordToLabel: Dict[str, QLabel] = {
             "water": self.ui.waterLabel,
@@ -42,14 +42,17 @@ class CoffeeCustomizeDialog(QDialog):
         }.items():
             svg.load(icon)
 
-    def selectionChanged(self):
-        current_coffee_item = self.ui.coffeeListWidget.currentItem()
+    def selectionChanged(self, current_coffee_item):
+        try:
+            current_coffee_item = current_coffee_item.text()
+        except AttributeError:
+            pass
 
         if not current_coffee_item:
             return
 
         for coffee in self.coffees:
-            if coffee.name == current_coffee_item.text():
+            if coffee.name == current_coffee_item:
                 self.current_coffee = coffee
                 break
 
@@ -62,7 +65,7 @@ class CoffeeCustomizeDialog(QDialog):
             label.setText(f"{values.get(word, 0)} {WORDS[word]}")
 
         self.label.setText(self.current_coffee.name)
-        self.setFromCoffee(1)
+        self.refresh()
 
     def openDialog(self):
         self.ui.coffeeListWidget.clear()
@@ -71,5 +74,6 @@ class CoffeeCustomizeDialog(QDialog):
 
         current_coffee_item: QListWidgetItem = self.ui.coffeeListWidget.findItems(self.current_coffee.name, Qt.MatchExactly)[0]  # type: ignore
         self.ui.coffeeListWidget.setItemSelected(current_coffee_item, True)
+        self.selectionChanged(self.current_coffee)
 
         self.exec_()

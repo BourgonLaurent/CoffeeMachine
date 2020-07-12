@@ -29,7 +29,10 @@ class CoffeeWindow(QMainWindow):
         self.ui.coffeeSelectionLabel.dialog.current_coffee = coffees[0]
         self.ui.coffeeSelectionLabel.dialog.coffees = coffees
         self.ui.coffeeSelectionLabel.dialog.label = self.ui.coffeeSelectionLabel
-        self.ui.coffeeSelectionLabel.dialog.setFromCoffee = self.setFromCoffee
+        self.ui.coffeeSelectionLabel.dialog.refresh = lambda: self.setFromCoffee(
+            int(self.ui.coffeeSelector.text())
+        )
+        self.ui.coffeeSelectionLabel.setText(coffees[0].name)
 
         self.current_coffee = lambda: self.ui.coffeeSelectionLabel.dialog.current_coffee
 

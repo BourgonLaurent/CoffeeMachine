@@ -1,8 +1,9 @@
 ## IngredientWidgets.py - CoffeeMachine.ui
 # Custom Widgets for CoffeeMachine
-from PySide2.QtCore import SignalInstance
+
 from ..coffee_lang import STATUS_EXCEEDING
 from PySide2.QtWidgets import QCheckBox, QLabel, QLineEdit
+from PySide2.QtCore import SignalInstance
 
 
 class IngredientSelector(QLineEdit):

@@ -1,3 +1,4 @@
+from CoffeeMachine.coffee_creator import CoffeeCreator
 import sys
 from CoffeeMachine import coffee_gui
 

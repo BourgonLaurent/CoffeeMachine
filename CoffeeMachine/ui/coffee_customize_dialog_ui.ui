@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Select a coffee</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog {
@@ -42,7 +42,6 @@ QListWidget {
 }
 
 QListWidget::item {
-  text-align: center;
   padding: 5px
 }
 
@@ -64,7 +63,7 @@ QLabel {
     <rect>
      <x>20</x>
      <y>20</y>
-     <width>141</width>
+     <width>181</width>
      <height>221</height>
     </rect>
    </property>
@@ -78,18 +77,23 @@ QLabel {
     <set>Qt::AlignCenter</set>
    </property>
    <property name="currentRow">
-    <number>-1</number>
+    <number>0</number>
    </property>
    <property name="sortingEnabled">
     <bool>true</bool>
    </property>
+   <item>
+    <property name="text">
+     <string>Cappucino</string>
+    </property>
+   </item>
   </widget>
   <widget class="QWidget" name="formLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>220</x>
      <y>20</y>
-     <width>211</width>
+     <width>171</width>
      <height>222</height>
     </rect>
    </property>
@@ -104,35 +108,19 @@ QLabel {
      <number>15</number>
     </property>
     <item row="0" column="1">
-     <widget class="QLabel" name="waterLabel">
-      <property name="text">
-       <string>200 mL of water</string>
-      </property>
-     </widget>
+     <widget class="QLabel" name="waterLabel"/>
     </item>
     <item row="1" column="1">
-     <widget class="QLabel" name="milkLabel">
-      <property name="text">
-       <string>20 mL of milk</string>
-      </property>
-     </widget>
+     <widget class="QLabel" name="milkLabel"/>
     </item>
     <item row="2" column="1">
-     <widget class="QLabel" name="beansLabel">
-      <property name="text">
-       <string>5 g of beans</string>
-      </property>
-     </widget>
+     <widget class="QLabel" name="beansLabel"/>
     </item>
     <item row="3" column="1">
-     <widget class="QLabel" name="priceLabel">
-      <property name="text">
-       <string>6 $</string>
-      </property>
-     </widget>
+     <widget class="QLabel" name="priceLabel"/>
     </item>
     <item row="0" column="0">
-     <widget class="QWidget" name="waterSvg" native="true">
+     <widget class="QSvgWidget" name="waterSvg" native="true">
       <property name="minimumSize">
        <size>
         <width>50</width>
@@ -148,7 +136,7 @@ QLabel {
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QWidget" name="widget" native="true">
+     <widget class="QSvgWidget" name="milkSvg" native="true">
       <property name="minimumSize">
        <size>
         <width>65</width>
@@ -164,7 +152,7 @@ QLabel {
      </widget>
     </item>
     <item row="2" column="0">
-     <widget class="QWidget" name="widget_2" native="true">
+     <widget class="QSvgWidget" name="beansSvg" native="true">
       <property name="minimumSize">
        <size>
         <width>50</width>
@@ -180,7 +168,7 @@ QLabel {
      </widget>
     </item>
     <item row="3" column="0">
-     <widget class="QWidget" name="widget_3" native="true">
+     <widget class="QSvgWidget" name="priceSvg" native="true">
       <property name="minimumSize">
        <size>
         <width>50</width>
@@ -198,6 +186,14 @@ QLabel {
    </layout>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QSvgWidget</class>
+   <extends>QWidget</extends>
+   <header>PySide2.QtSvg</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

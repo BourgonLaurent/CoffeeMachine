@@ -1,10 +1,11 @@
 ## CustomizeDialogLabel.py - CoffeeMachine.ui
 # Clicking label that activates a QDialog
 
-from CoffeeMachine.coffee_creator import CoffeeCreator
 from PySide2.QtWidgets import QDialog, QGroupBox, QLabel
 from PySide2.QtCore import SignalInstance, Signal
+from PySide2.QtCore import SignalInstance
 
+from ..coffee_creator import CoffeeCreator
 from .coffee_customize_dialog import CoffeeCustomizeDialog
 
 

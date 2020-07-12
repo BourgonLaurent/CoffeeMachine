@@ -125,6 +125,7 @@ class Ui_mainWindow(object):
         font1.setItalic(False)
         font1.setWeight(75)
         self.coffeeSelectionLabel.setFont(font1)
+        self.coffeeSelectionLabel.setCursor(QCursor(Qt.PointingHandCursor))
         self.coffeeSelectionLabel.setAlignment(Qt.AlignCenter)
         self.coffeeSelector = IngredientSelector(self.coffeeGroupBox)
         self.coffeeSelector.setObjectName(u"coffeeSelector")

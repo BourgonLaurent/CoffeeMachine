@@ -28,7 +28,10 @@ class CoffeeMachine(QApplication):
 
         # Set coffees, if they don't exists, use some defaults
         self.coffees: List[CoffeeCreator] = coffees if coffees else [
-            CoffeeCreator("Regular", {"water": 200, "milk": 20, "beans": 5}, 6)
+            CoffeeCreator("Regular", {"water": 200, "milk": 20, "beans": 5}, 2),
+            CoffeeCreator("Espresso", {"water": 250, "beans": 16}, 4),
+            CoffeeCreator("Cappuccino", {"water": 200, "milk": 100, "beans": 12}, 6),
+            CoffeeCreator("Latte", {"water": 350, "milk": 75, "beans": 20}, 7),
         ]
 
         self.window: CoffeeWindow = CoffeeWindow(self.coffees)

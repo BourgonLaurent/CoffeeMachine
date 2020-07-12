@@ -15,6 +15,8 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
     QPixmap, QRadialGradient)
 from PySide2.QtWidgets import *
 
+from PySide2.QtSvg import QSvgWidget
+
 
 class Ui_coffeeSelectionDialog(object):
     def setupUi(self, coffeeSelectionDialog):
@@ -39,7 +41,6 @@ class Ui_coffeeSelectionDialog(object):
 "}\n"
 "\n"
 "QListWidget::item {\n"
-"  text-align: center;\n"
 "  padding: 5px\n"
 "}\n"
 "\n"
@@ -56,15 +57,16 @@ class Ui_coffeeSelectionDialog(object):
 "  color: #6F7987;\n"
 "}")
         self.coffeeListWidget = QListWidget(coffeeSelectionDialog)
+        QListWidgetItem(self.coffeeListWidget)
         self.coffeeListWidget.setObjectName(u"coffeeListWidget")
-        self.coffeeListWidget.setGeometry(QRect(20, 20, 141, 221))
+        self.coffeeListWidget.setGeometry(QRect(20, 20, 181, 221))
         self.coffeeListWidget.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.coffeeListWidget.setSpacing(4)
         self.coffeeListWidget.setItemAlignment(Qt.AlignCenter)
         self.coffeeListWidget.setSortingEnabled(True)
         self.formLayoutWidget = QWidget(coffeeSelectionDialog)
         self.formLayoutWidget.setObjectName(u"formLayoutWidget")
-        self.formLayoutWidget.setGeometry(QRect(180, 20, 211, 222))
+        self.formLayoutWidget.setGeometry(QRect(220, 20, 171, 222))
         self.coffeeLayout = QFormLayout(self.formLayoutWidget)
         self.coffeeLayout.setObjectName(u"coffeeLayout")
         self.coffeeLayout.setLabelAlignment(Qt.AlignCenter)
@@ -91,48 +93,51 @@ class Ui_coffeeSelectionDialog(object):
 
         self.coffeeLayout.setWidget(3, QFormLayout.FieldRole, self.priceLabel)
 
-        self.waterSvg = QWidget(self.formLayoutWidget)
+        self.waterSvg = QSvgWidget(self.formLayoutWidget)
         self.waterSvg.setObjectName(u"waterSvg")
         self.waterSvg.setMinimumSize(QSize(50, 50))
         self.waterSvg.setMaximumSize(QSize(50, 50))
 
         self.coffeeLayout.setWidget(0, QFormLayout.LabelRole, self.waterSvg)
 
-        self.widget = QWidget(self.formLayoutWidget)
-        self.widget.setObjectName(u"widget")
-        self.widget.setMinimumSize(QSize(65, 40))
-        self.widget.setMaximumSize(QSize(65, 40))
+        self.milkSvg = QSvgWidget(self.formLayoutWidget)
+        self.milkSvg.setObjectName(u"milkSvg")
+        self.milkSvg.setMinimumSize(QSize(65, 40))
+        self.milkSvg.setMaximumSize(QSize(65, 40))
 
-        self.coffeeLayout.setWidget(1, QFormLayout.LabelRole, self.widget)
+        self.coffeeLayout.setWidget(1, QFormLayout.LabelRole, self.milkSvg)
 
-        self.widget_2 = QWidget(self.formLayoutWidget)
-        self.widget_2.setObjectName(u"widget_2")
-        self.widget_2.setMinimumSize(QSize(50, 50))
-        self.widget_2.setMaximumSize(QSize(50, 50))
+        self.beansSvg = QSvgWidget(self.formLayoutWidget)
+        self.beansSvg.setObjectName(u"beansSvg")
+        self.beansSvg.setMinimumSize(QSize(50, 50))
+        self.beansSvg.setMaximumSize(QSize(50, 50))
 
-        self.coffeeLayout.setWidget(2, QFormLayout.LabelRole, self.widget_2)
+        self.coffeeLayout.setWidget(2, QFormLayout.LabelRole, self.beansSvg)
 
-        self.widget_3 = QWidget(self.formLayoutWidget)
-        self.widget_3.setObjectName(u"widget_3")
-        self.widget_3.setMinimumSize(QSize(50, 50))
-        self.widget_3.setMaximumSize(QSize(50, 50))
+        self.priceSvg = QSvgWidget(self.formLayoutWidget)
+        self.priceSvg.setObjectName(u"priceSvg")
+        self.priceSvg.setMinimumSize(QSize(50, 50))
+        self.priceSvg.setMaximumSize(QSize(50, 50))
 
-        self.coffeeLayout.setWidget(3, QFormLayout.LabelRole, self.widget_3)
+        self.coffeeLayout.setWidget(3, QFormLayout.LabelRole, self.priceSvg)
 
 
         self.retranslateUi(coffeeSelectionDialog)
 
-        self.coffeeListWidget.setCurrentRow(-1)
+        self.coffeeListWidget.setCurrentRow(0)
 
 
         QMetaObject.connectSlotsByName(coffeeSelectionDialog)
     # setupUi
 
     def retranslateUi(self, coffeeSelectionDialog):
-        coffeeSelectionDialog.setWindowTitle(QCoreApplication.translate("coffeeSelectionDialog", u"Dialog", None))
-        self.waterLabel.setText(QCoreApplication.translate("coffeeSelectionDialog", u"200 mL of water", None))
-        self.milkLabel.setText(QCoreApplication.translate("coffeeSelectionDialog", u"20 mL of milk", None))
-        self.beansLabel.setText(QCoreApplication.translate("coffeeSelectionDialog", u"5 g of beans", None))
-        self.priceLabel.setText(QCoreApplication.translate("coffeeSelectionDialog", u"6 $", None))
+        coffeeSelectionDialog.setWindowTitle(QCoreApplication.translate("coffeeSelectionDialog", u"Select a coffee", None))
+
+        __sortingEnabled = self.coffeeListWidget.isSortingEnabled()
+        self.coffeeListWidget.setSortingEnabled(False)
+        ___qlistwidgetitem = self.coffeeListWidget.item(0)
+        ___qlistwidgetitem.setText(QCoreApplication.translate("coffeeSelectionDialog", u"Cappucino", None));
+        self.coffeeListWidget.setSortingEnabled(__sortingEnabled)
+
     # retranslateUi
 

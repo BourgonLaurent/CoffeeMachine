@@ -26,8 +26,11 @@ class CoffeeWindow(QMainWindow):
         self.ui = Ui_mainWindow()
         self.ui.setupUi(self)
 
-        self.current_coffee: CoffeeCreator = coffees[0]
+        self.ui.coffeeSelectionLabel.dialog.current_coffee = coffees[0]
         self.ui.coffeeSelectionLabel.dialog.coffees = coffees
+        self.ui.coffeeSelectionLabel.dialog.label = self.ui.coffeeSelectionLabel
+
+        self.current_coffee = self.ui.coffeeSelectionLabel.dialog.current_coffee
 
         self._setDefinitions()
         self._loadSVG()

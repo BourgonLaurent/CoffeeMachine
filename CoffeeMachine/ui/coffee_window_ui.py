@@ -77,22 +77,13 @@ class Ui_mainWindow(object):
 "  color: #6F7987;\n"
 "}\n"
 "\n"
-"QPushButton#adminPushButton {\n"
-"  background: none;\n"
-"}\n"
-"\n"
-"QCheck"
-                        "Box::indicator:checked {\n"
-"    image: url(:/icons/assets/infinity_on.svg);\n"
+"QCheckBox::indicator:checked {\n"
+"    image: url(:/icons/assets/infinity_o"
+                        "n.svg);\n"
 "}\n"
 "\n"
 "QCheckBox::indicator:unchecked {\n"
 "    image: url(:/icons/assets/infinity_off.svg);\n"
-"}\n"
-"\n"
-"QPushButton#adminPanelLabel:pressed {\n"
-"  background-color: #c2b7a6;\n"
-"  border-radius: 14px;\n"
 "}\n"
 "\n"
 "QLabel#coffeeStatusLabel,\n"
@@ -253,14 +244,6 @@ class Ui_mainWindow(object):
         self.priceInfinityCheckBox.raise_()
         self.priceSelectionSvg.raise_()
         self.priceStatusLabel.raise_()
-        self.adminPanelLabel = QPushButton(self.mainWidget)
-        self.adminPanelLabel.setObjectName(u"adminPanelLabel")
-        self.adminPanelLabel.setGeometry(QRect(660, 497, 121, 91))
-        icon1 = QIcon()
-        icon1.addFile(u":/icons/assets/users-cog.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.adminPanelLabel.setIcon(icon1)
-        self.adminPanelLabel.setIconSize(QSize(105, 73))
-        self.adminPanelLabel.setFlat(True)
         mainWindow.setCentralWidget(self.mainWidget)
 
         self.retranslateUi(mainWindow)

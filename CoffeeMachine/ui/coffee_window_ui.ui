@@ -74,21 +74,12 @@ QLabel#priceSelectorSuffix {
   color: #6F7987;
 }
 
-QPushButton#adminPushButton {
-  background: none;
-}
-
 QCheckBox::indicator:checked {
     image: url(:/icons/assets/infinity_on.svg);
 }
 
 QCheckBox::indicator:unchecked {
     image: url(:/icons/assets/infinity_off.svg);
-}
-
-QPushButton#adminPanelLabel:pressed {
-  background-color: #c2b7a6;
-  border-radius: 14px;
 }
 
 QLabel#coffeeStatusLabel,
@@ -584,29 +575,6 @@ QLabel#priceStatusLabel {
     <zorder>priceInfinityCheckBox</zorder>
     <zorder>priceSelectionSvg</zorder>
     <zorder>priceStatusLabel</zorder>
-   </widget>
-   <widget class="QPushButton" name="adminPanelLabel">
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>497</y>
-      <width>121</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="icon">
-     <iconset resource="coffee_window_resources.qrc">
-      <normaloff>:/icons/assets/users-cog.svg</normaloff>:/icons/assets/users-cog.svg</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>105</width>
-      <height>73</height>
-     </size>
-    </property>
-    <property name="flat">
-     <bool>true</bool>
-    </property>
    </widget>
   </widget>
  </widget>

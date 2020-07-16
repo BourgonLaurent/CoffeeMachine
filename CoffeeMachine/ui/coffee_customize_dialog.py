@@ -14,7 +14,7 @@
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from typing import List, Dict, cast
+from typing import List, Dict
 from PySide2.QtWidgets import QDialog, QListWidgetItem, QLabel
 from PySide2.QtCore import Qt
 

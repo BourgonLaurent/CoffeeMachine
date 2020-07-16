@@ -12,14 +12,14 @@
 
 ## Requirements
 
-| Category           | Value       | Additional Notes                                           | Installation                                   |
-| ------------------ | ----------- | ---------------------------------------------------------- | ---------------------------------------------- |
-| OS:                | Any         |                                                            |                                                |
-| Python:            | `Version 3` | Developped under 3.8.3, update if any problem occurs       | [`Python3`](https://www.python.org/downloads/) |
-| Python Librairies: | `os`        | Default package, no need to install it                     |                                                |
-|                    | `sys`       | Default package, no need to install it                     |                                                |
-|                    | `typing`    | Default package, no need to install it                     |                                                |
-|                    | `PySide2`   | **NOT PART OF DEFAULT PACKAGES, NEED TO INSTALL MANUALLY** | PyPi: `python3 -m pip install PySide2`         |
+| Category           | Value     | Additional Notes                                           | Installation                                   |
+| ------------------ | --------- | ---------------------------------------------------------- | ---------------------------------------------- |
+| OS:                | Any       |                                                            |                                                |
+| Python:            | `3.6+`    | Developped under 3.8.3, update if any problem occurs       | [`Python3`](https://www.python.org/downloads/) |
+| Python Librairies: | `os`      | Default package, no need to install it                     |                                                |
+|                    | `sys`     | Default package, no need to install it                     |                                                |
+|                    | `typing`  | Default package, no need to install it                     |                                                |
+|                    | `PySide2` | **NOT PART OF DEFAULT PACKAGES, NEED TO INSTALL MANUALLY** | PyPi: `python3 -m pip install PySide2`         |
 
 ## Installation
 

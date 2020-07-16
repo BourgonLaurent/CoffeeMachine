@@ -86,7 +86,9 @@ QLabel#coffeeStatusLabel,
 QLabel#waterStatusLabel,
 QLabel#milkStatusLabel,
 QLabel#beansStatusLabel,
-QLabel#priceStatusLabel {
+QLabel#priceStatusLabel,
+QLabel#aboutLabel,
+QLabel#aboutLabel:visited {
   font-family: Segoe UI;
   font-style: normal;
   font-weight: 500;
@@ -575,6 +577,25 @@ QLabel#priceStatusLabel {
     <zorder>priceInfinityCheckBox</zorder>
     <zorder>priceSelectionSvg</zorder>
     <zorder>priceStatusLabel</zorder>
+   </widget>
+   <widget class="QLabel" name="aboutLabel">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>561</y>
+      <width>181</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/BourgonLaurent/CoffeeMachine/blob/master/LICENSE&quot;&gt;&lt;span style=&quot;text-decoration:none; color:#4e5884;&quot;&gt;Laurent Bourgon © 2020&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+    <property name="openExternalLinks">
+     <bool>true</bool>
+    </property>
    </widget>
   </widget>
  </widget>

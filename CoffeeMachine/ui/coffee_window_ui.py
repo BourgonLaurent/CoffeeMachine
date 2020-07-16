@@ -90,7 +90,9 @@ class Ui_mainWindow(object):
 "QLabel#waterStatusLabel,\n"
 "QLabel#milkStatusLabel,\n"
 "QLabel#beansStatusLabel,\n"
-"QLabel#priceStatusLabel {\n"
+"QLabel#priceStatusLabel,\n"
+"QLabel#aboutLabel,\n"
+"QLabel#aboutLabel:visited {\n"
 "  font-family: Segoe UI;\n"
 "  font-style: normal;\n"
 "  font-weight: 500;\n"
@@ -244,6 +246,11 @@ class Ui_mainWindow(object):
         self.priceInfinityCheckBox.raise_()
         self.priceSelectionSvg.raise_()
         self.priceStatusLabel.raise_()
+        self.aboutLabel = QLabel(self.mainWidget)
+        self.aboutLabel.setObjectName(u"aboutLabel")
+        self.aboutLabel.setGeometry(QRect(600, 561, 181, 21))
+        self.aboutLabel.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.aboutLabel.setOpenExternalLinks(True)
         mainWindow.setCentralWidget(self.mainWidget)
 
         self.retranslateUi(mainWindow)
@@ -281,6 +288,7 @@ class Ui_mainWindow(object):
         self.priceSelector.setText(QCoreApplication.translate("mainWindow", u"001", None))
         self.priceInfinityCheckBox.setText("")
         self.priceStatusLabel.setText("")
+        self.aboutLabel.setText(QCoreApplication.translate("mainWindow", u"<html><head/><body><p><a href=\"https://github.com/BourgonLaurent/CoffeeMachine/blob/master/LICENSE\"><span style=\"text-decoration:none; color:#4e5884;\">Laurent Bourgon \u00a9 2020</span></a></p></body></html>", None))
         pass
     # retranslateUi
 

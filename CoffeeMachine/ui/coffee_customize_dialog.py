@@ -14,10 +14,12 @@
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+# Librairies
 from typing import List, Dict
 from PySide2.QtWidgets import QDialog, QListWidgetItem, QLabel
 from PySide2.QtCore import Qt
 
+# Project
 from ..coffee_lang import ICONS, WORDS
 from ..coffee_creator import CoffeeCreator
 from .coffee_customize_dialog_ui import Ui_coffeeSelectionDialog

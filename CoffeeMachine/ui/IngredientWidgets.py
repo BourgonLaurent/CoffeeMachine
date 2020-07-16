@@ -14,10 +14,12 @@
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+# Librairies
 from typing import cast
 from PySide2.QtWidgets import QCheckBox, QLabel, QLineEdit
 from PySide2.QtCore import SignalInstance, Signal
 
+# Project
 from ..coffee_lang import STATUS_EXCEEDING
 
 

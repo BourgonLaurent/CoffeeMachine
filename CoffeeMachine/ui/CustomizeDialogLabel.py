@@ -14,12 +14,13 @@
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+# Librairies
 from typing import cast
-from PySide2.QtWidgets import QDialog, QGroupBox, QLabel
+from PySide2.QtWidgets import QGroupBox, QLabel
 from PySide2.QtCore import SignalInstance, Signal
 from PySide2.QtCore import SignalInstance
 
-from ..coffee_creator import CoffeeCreator
+# Project
 from .coffee_customize_dialog import CoffeeCustomizeDialog
 
 

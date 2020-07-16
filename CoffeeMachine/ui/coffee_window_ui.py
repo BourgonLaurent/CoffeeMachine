@@ -288,7 +288,7 @@ class Ui_mainWindow(object):
         self.priceSelector.setText(QCoreApplication.translate("mainWindow", u"001", None))
         self.priceInfinityCheckBox.setText("")
         self.priceStatusLabel.setText("")
-        self.aboutLabel.setText(QCoreApplication.translate("mainWindow", u"<html><head/><body><p><a href=\"https://github.com/BourgonLaurent/CoffeeMachine/blob/master/LICENSE\"><span style=\"text-decoration:none; color:#4e5884;\">Laurent Bourgon \u00a9 2020</span></a></p></body></html>", None))
+        self.aboutLabel.setText(QCoreApplication.translate("mainWindow", u"<html><head/><body><p><a href=\"https://github.com/BourgonLaurent/CoffeeMachine/blob/master/LICENSE\" style=\"text-decoration:none; color:#4e5884;\">LICENSE NOTICE</a></p></body></html>", None))
         pass
     # retranslateUi
 

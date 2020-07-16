@@ -21,7 +21,7 @@ from PySide2.QtWidgets import QMainWindow, QLabel
 # Project
 from .ui.coffee_window_ui import Ui_mainWindow
 from .coffee_creator import CoffeeCreator
-from .coffee_lang import STATUS_LIMITING, WORDS, ICONS
+from .coffee_lang import LICENSE_FORMATTED, STATUS_LIMITING, WORDS, ICONS
 from .ui.IngredientWidgets import IngredientInfinity, IngredientSelector
 
 
@@ -98,6 +98,8 @@ class CoffeeWindow(QMainWindow):
         }
         for word, lang in WORDS.items():
             wordToSuffix[word].setText(lang)
+
+        self.ui.aboutLabel.setText(LICENSE_FORMATTED)
 
     def _enableConnections(self):
         self.ui.coffeeSelector.textEdited.connect(self.setFromCoffee)

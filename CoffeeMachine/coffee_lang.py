@@ -17,6 +17,12 @@
 # Librairies
 from typing import Dict
 
+LICENSE_NAME: str = "Laurent Bourgon"
+LICENSE_YEAR: str = "2020"
+# LICENSE: str = f"{LICENSE_NAME} © {LICENSE_YEAR}"
+LICENSE_LINK: str = r"https://github.com/BourgonLaurent/CoffeeMachine/blob/master/LICENSE"
+LICENSE_FORMATTED: str = f'<a href="{LICENSE_LINK}" style="text-decoration:none; color:#4e5884;">{LICENSE_NAME} © {LICENSE_YEAR}</a>'
+
 UNITS_MILLILITERS: str = "mL"
 UNITS_GRAMS: str = "g"
 UNITS_CUPS: str = "cups"

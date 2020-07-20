@@ -27,7 +27,7 @@ Clone/Download this repository inside an empty folder:
 
 * Click the green download button and extract the `.zip` archive, or
 * Use GitHub Desktop, or
-* Inside a terminal, enter the following command: `git clone https://github.com/BourgonLaurent/CoffeeMachine`
+* Inside a terminal, clone with the following command: `git clone https://github.com/BourgonLaurent/CoffeeMachine`
 
 ## Usage
 

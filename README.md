@@ -4,7 +4,7 @@
 
  *A simple coffee calculator*
 
- [![Languages](https://img.shields.io/github/languages/top/BourgonLaurent/CofeeMachine)](https://www.python.org/) [![License](https://img.shields.io/github/license/BourgonLaurent/CofeeMachine)](LICENSE)
+ [![Languages](https://img.shields.io/github/languages/top/BourgonLaurent/CoffeeMachine)](https://www.python.org/) [![License](https://img.shields.io/github/license/BourgonLaurent/CoffeeMachine)](LICENSE)
 
 </div>
 

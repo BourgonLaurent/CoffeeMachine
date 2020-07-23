@@ -77,26 +77,33 @@ class CoffeeCreator(Coffee):
         """## Return the maximum number of coffees you can make
 
         ### Arguments:\n
-            \tlimitedingredients {Dict[str, int]} -- Dictionary of ingredients in format {ingredient: amount}
+            \tlimitedingredients {Dict[str, int]} -- Dictionary of ingredients in format {ingredient: amount} (if amount = -1: skipped)
 
         ### Returns:\n
             \t{Tuple[int, Set[int, str]]} -- 0 {int}: Maximum number of coffees - 1 {set}: Limiters
         """
-
+        # If an ingredient is missing, set its value to 0
         for ingredient in self.ingredients:
             limited_ingredients.setdefault(ingredient, 0)
 
+        # Find how many coffees each ingredient can make
+        # If amount = -1 => infinity, we need to remove it
         amount_of_coffees: Dict[str, int] = {
             ingredient: self.coffees_possible_ingredient(ingredient, amount)
             for ingredient, amount in limited_ingredients.items()
             if ingredient in self.ingredients and amount >= 0
         }
 
-        possible_ingredients: Dict[int, Set[str]] = {}
+        # If everything was -1, no coffees can be made
+        if not amount_of_coffees:
+            return (0, set())
 
+        # Create an empty dict
+        possible_ingredients: Dict[int, Set[str]] = {}
         for ingredient, amount in amount_of_coffees.items():
             possible_ingredients.setdefault(amount, set()).update([ingredient])
 
+        # Find the maximum value of coffees you can make
         max_possible: int = min(possible_ingredients.keys())
 
         return (max_possible, possible_ingredients[max_possible])
